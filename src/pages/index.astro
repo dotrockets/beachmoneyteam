@@ -79,64 +79,66 @@ const affiliates = [
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-    <!-- Animated gradient background -->
+  <!-- Hero Section — Comic Style -->
+  <section class="relative min-h-screen flex items-end justify-center overflow-hidden">
+    <!-- Comic Background -->
     <div class="absolute inset-0">
-      <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 via-ocean-800 to-ocean-900"></div>
-      <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-ocean-500/10 rounded-full blur-[128px] animate-pulse" style="animation-duration: 8s;"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-sunset-500/[0.08] rounded-full blur-[128px] animate-pulse" style="animation-duration: 12s; animation-delay: 2s;"></div>
-      <div class="absolute top-1/3 right-1/3 w-[400px] h-[400px] bg-palm-500/[0.06] rounded-full blur-[128px] animate-pulse" style="animation-duration: 10s; animation-delay: 4s;"></div>
+      <img src="/images/hero-comic-bg.png" alt="" width="1920" height="1080" class="w-full h-full object-cover" fetchpriority="high" />
+      <div class="absolute inset-0 bg-gradient-to-t from-ocean-900 via-ocean-900/60 to-ocean-900/20"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-ocean-900/40 via-transparent to-ocean-900/40"></div>
     </div>
 
-    <!-- Wave decoration -->
-    <div class="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
-      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" preserveAspectRatio="none">
-        <path d="M0 60C240 120 480 0 720 60C960 120 1200 0 1440 60V120H0V60Z" fill="rgba(10,44,55,0.5)"/>
-        <path d="M0 80C240 30 480 100 720 50C960 0 1200 80 1440 40V120H0V80Z" fill="rgba(10,44,55,0.8)"/>
-      </svg>
-    </div>
+    <!-- Character -->
+    <img
+      src="/images/hero-character.png"
+      alt="Digital Nomad auf Koh Phangan"
+      width="400"
+      height="533"
+      fetchpriority="high"
+      class="absolute bottom-0 right-4 md:right-12 lg:right-24 w-48 md:w-64 lg:w-80 z-20 drop-shadow-[0_0_30px_rgba(0,0,0,0.5)]"
+    />
 
-    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-      <!-- Tagline pill -->
-      <div class="inline-flex items-center gap-2 bg-ocean-700/50 backdrop-blur-sm border border-ocean-500/20 rounded-full px-5 py-2 mb-8 text-sm text-ocean-200">
-        <span class="inline-block w-2 h-2 rounded-full bg-seafoam animate-pulse"></span>
-        Live from Koh Phangan, Thailand
-      </div>
-
-      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-8">
-        <span class="block text-sand-100">Dein Bürojob</span>
-        <span class="block text-sand-100/40">war gestern.</span>
-        <span class="block mt-2 bg-gradient-to-r from-sunset-400 via-sunset-300 to-sand-200 bg-clip-text text-transparent">Deine Freiheit</span>
-        <span class="block bg-gradient-to-r from-sunset-400 via-sunset-300 to-sand-200 bg-clip-text text-transparent">startet jetzt.</span>
-      </h1>
-
-      <p class="max-w-2xl mx-auto text-lg md:text-xl text-sand-300 leading-relaxed mb-10 text-pretty">
-        Ich lebe auf einer Insel in Thailand und verdiene online. Hier sind die exakten Tools die das möglich machen — getestet, ehrlich bewertet, keine&nbsp;Bullshit-Versprechen.
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#tools" class="group relative bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_40px_rgba(255,140,26,0.3)]">
-          Die 3 Tools die alles verändert haben
-          <span class="inline-block ml-2 group-hover:translate-y-0.5 transition-transform">&#8595;</span>
-        </a>
-      </div>
-
-      <!-- Social proof -->
-      <div class="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-sand-400">
-        <div class="flex items-center gap-2">
-          <span class="text-sunset-400 font-bold text-xl font-display">2+ Jahre</span>
-          <span>Digital Nomad</span>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 pb-16 md:pb-24 pt-32">
+      <!-- Content card with glassmorphism -->
+      <div class="max-w-2xl">
+        <!-- Tagline pill -->
+        <div class="inline-flex items-center gap-2 bg-ocean-800/60 backdrop-blur-md border border-ocean-500/30 rounded-full px-5 py-2 mb-8 text-sm text-ocean-200">
+          <span class="inline-block w-2 h-2 rounded-full bg-seafoam animate-pulse"></span>
+          Live from Koh Phangan, Thailand
         </div>
-        <div class="w-px h-6 bg-ocean-600 hidden sm:block"></div>
-        <div class="flex items-center gap-2">
-          <span class="text-sunset-400 font-bold text-xl font-display">12+</span>
-          <span>Länder bereist</span>
+
+        <div class="bg-ocean-900/70 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-ocean-600/20 shadow-2xl">
+          <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tight mb-6">
+            <span class="block text-sand-100">Dein Bürojob</span>
+            <span class="block text-sand-100/40 italic">war gestern.</span>
+            <span class="block mt-2 text-sunset-400">Deine Freiheit</span>
+            <span class="block text-sunset-400">startet jetzt.</span>
+          </h1>
+
+          <p class="max-w-xl text-base md:text-lg text-sand-300 leading-relaxed mb-8 text-pretty">
+            Ich lebe auf einer Insel in Thailand und verdiene online. Hier sind die exakten Tools die das möglich machen — getestet, ehrlich bewertet, keine&nbsp;Bullshit-Versprechen.
+          </p>
+
+          <a href="#tools" class="group inline-flex items-center gap-2 bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_40px_rgba(255,140,26,0.3)]">
+            Die 3 Tools die alles verändert haben
+            <span class="inline-block group-hover:translate-y-0.5 transition-transform">&#8595;</span>
+          </a>
         </div>
-        <div class="w-px h-6 bg-ocean-600 hidden sm:block"></div>
-        <div class="flex items-center gap-2">
-          <span class="text-sunset-400 font-bold text-xl font-display">100%</span>
-          <span>Remote Income</span>
+
+        <!-- Social proof -->
+        <div class="mt-8 flex flex-wrap items-center gap-6 text-sm">
+          <div class="flex items-center gap-2 bg-ocean-900/60 backdrop-blur-sm rounded-full px-4 py-2 border border-ocean-600/20">
+            <span class="text-sunset-400 font-bold text-lg font-display">2+ Jahre</span>
+            <span class="text-sand-400">Digital Nomad</span>
+          </div>
+          <div class="flex items-center gap-2 bg-ocean-900/60 backdrop-blur-sm rounded-full px-4 py-2 border border-ocean-600/20">
+            <span class="text-sunset-400 font-bold text-lg font-display">12+</span>
+            <span class="text-sand-400">Länder bereist</span>
+          </div>
+          <div class="flex items-center gap-2 bg-ocean-900/60 backdrop-blur-sm rounded-full px-4 py-2 border border-ocean-600/20">
+            <span class="text-sunset-400 font-bold text-lg font-display">100%</span>
+            <span class="text-sand-400">Remote Income</span>
+          </div>
         </div>
       </div>
     </div>
