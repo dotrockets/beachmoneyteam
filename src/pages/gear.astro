@@ -1,0 +1,388 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const categories = [
+  {
+    name: "Laptop",
+    emoji: "💻",
+    products: [
+      {
+        id: "macbook-air-m4",
+        badge: "Mein Daily Driver",
+        title: "MacBook Air M4",
+        subtitle: "13\" · 24 GB RAM · 512 GB SSD · Mitternacht",
+        description: "M4 Chip, den ganzen Tag Akku, federleicht. Das Ding nutze ich jeden Tag — Cafés, Coworking, Strand. Genug Power für alles.",
+        features: ["M4 Chip, 10-Core GPU", "24 GB RAM", "18h+ Akkulaufzeit", "Liquid Retina Display"],
+        price: "ab 1.579€",
+        link: "https://www.amazon.de/dp/B0DZDCH45Q?tag=tapu",
+        pick: true,
+      },
+    ],
+  },
+  {
+    name: "Kopfhörer",
+    emoji: "🎧",
+    products: [
+      {
+        id: "sony-wh1000xm5",
+        badge: "Preis-Leistung",
+        title: "Sony WH-1000XM5",
+        subtitle: "Wireless · ANC · 30h Akku",
+        description: "Industrie-bestes Noise Cancelling. 30h Akku, kristallklare Calls mit 8 Mikros, Multipoint Bluetooth. Das Coworking-Survival-Tool.",
+        features: ["Best-in-Class ANC", "30h Akkulaufzeit", "8 Mikrofone für Calls", "Multipoint Bluetooth"],
+        price: "~219€",
+        link: "https://www.amazon.de/dp/B09Y2MYL5C?tag=tapu",
+        pick: true,
+      },
+      {
+        id: "airpods-max",
+        badge: "Premium",
+        title: "AirPods Max (USB-C)",
+        subtitle: "Mitternacht · Spatial Audio",
+        description: "Pro-Level ANC, Transparenzmodus, USB-C. Perfekt im Apple-Ecosystem. Premium-Build der Jahre hält.",
+        features: ["Pro-Level ANC", "Spatial Audio", "USB-C Charging", "Apple Ecosystem"],
+        price: "~479€",
+        link: "https://www.amazon.de/dp/B0DGHXBDQQ?tag=tapu",
+        pick: false,
+      },
+      {
+        id: "bose-qc-ultra",
+        badge: "Komfort-König",
+        title: "Bose QC Ultra",
+        subtitle: "Wireless · 3 Modi · Immersive Audio",
+        description: "Quiet, Aware, Immersion — drei Modi für jede Situation. Bequemste Over-Ears die es gibt. Ganztägiges Tragen kein Problem.",
+        features: ["3 ANC-Modi", "Immersive Audio", "24h Akku", "Bluetooth 5.3"],
+        price: "~299€",
+        link: "https://www.amazon.de/dp/B0CCZ1L489?tag=tapu",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "Powerbank",
+    emoji: "🔋",
+    products: [
+      {
+        id: "anker-20k-87w",
+        badge: "Best Value",
+        title: "Anker 20.000mAh (87W)",
+        subtitle: "Built-in USB-C Kabel · 3 Ports",
+        description: "Integriertes USB-C Kabel, 65W Single-Port — lädt dein MacBook in 39 Min auf 50%. Für ~40€ ein No-Brainer.",
+        features: ["87W Max Output", "Built-in USB-C Kabel", "3 Ports gleichzeitig", "MacBook-kompatibel"],
+        price: "~40€",
+        link: "https://www.amazon.de/dp/B0CXDXP8VR?tag=tapu",
+        pick: true,
+      },
+      {
+        id: "anker-prime-27k",
+        badge: "Power User",
+        title: "Anker Prime 27.650mAh",
+        subtitle: "250W · 140W Single Port · Smart App",
+        description: "140W laden dein 16\" MacBook Pro in 28 Min auf 50%. 99.54Wh — maximale Flugzeug-Kapazität. In 37 Min voll geladen.",
+        features: ["250W Total Output", "140W PD 3.1", "Flugzeug-zugelassen", "Smart App Control"],
+        price: "~150€",
+        link: "https://www.amazon.de/dp/B0BYP2F3SG?tag=tapu",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "Laptop Stand",
+    emoji: "🖥️",
+    products: [
+      {
+        id: "nexstand-k2",
+        badge: "Nomad Classic",
+        title: "NEXSTAND K2",
+        subtitle: "234g · 8 Stufen · Faltbar",
+        description: "234 Gramm. Passt in die Jackentasche. 8 Höhenstufen gegen Nackenschmerzen. DER Laptop-Stand der Nomad-Community.",
+        features: ["Nur 234 Gramm", "8 Höhenstufen", "Passt in jede Tasche", "10–17\" Laptops"],
+        price: "~30€",
+        link: "https://www.amazon.de/dp/B01HHYQBB8?tag=tapu",
+        pick: true,
+      },
+      {
+        id: "roost-v3",
+        badge: "Premium",
+        title: "Roost V3",
+        subtitle: "Ultra-leicht · 3 Stufen · Bulletproof",
+        description: "Der Original-Nomad-Stand. Premium-Build der Jahre hält. Gummi-Einsätze halten den Laptop bombenfest.",
+        features: ["Ultra-leicht", "3 Höhenstufen", "Premium Build", "Rutschfest"],
+        price: "~75€",
+        link: "https://www.amazon.de/dp/B01C9KG8IG?tag=tapu",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "Reiseadapter",
+    emoji: "🔌",
+    products: [
+      {
+        id: "epicka-adapter",
+        badge: "All-in-One",
+        title: "EPICKA Universal Adapter",
+        subtitle: "200+ Länder · 5 USB Ports · 30W",
+        description: "Ein Adapter für die ganze Welt. 3× USB-C, 2× USB-A plus AC-Durchgang. Lade 6 Geräte gleichzeitig von einer Steckdose.",
+        features: ["200+ Länder", "3 USB-C + 2 USB-A", "30W Output", "Sicherheits-Shutters"],
+        price: "~27€",
+        link: "https://www.amazon.de/dp/B0CS2TK111?tag=tapu",
+        pick: true,
+      },
+    ],
+  },
+  {
+    name: "Portable Monitor",
+    emoji: "📱",
+    products: [
+      {
+        id: "asus-zenscreen",
+        badge: "Zuverlässig",
+        title: "ASUS ZenScreen MB16ACV",
+        subtitle: "15.6\" · 1080P · USB-C · Auto-Rotation",
+        description: "ASUS-Qualität ist wichtig wenn dein Gear nicht ausfallen darf. Auto-Rotation, Tripod-Mount, Augen-Schutz für lange Sessions.",
+        features: ["15.6\" Full HD IPS", "Single USB-C Kabel", "Auto-Rotation", "Tripod-Mount"],
+        price: "~179€",
+        link: "https://www.amazon.de/dp/B0914KHQ4G?tag=tapu",
+        pick: true,
+      },
+      {
+        id: "cocopar-monitor",
+        badge: "Budget Pick",
+        title: "cocopar 15.6\" Monitor",
+        subtitle: "1080P · 700g · Built-in Stand",
+        description: "700g, 4mm dünn, nur ein USB-C Kabel. Für ~110€ ein unschlagbares Preis-Leistungs-Verhältnis.",
+        features: ["Nur 700g", "4mm dünn", "Built-in Stand", "HDMI + 2× USB-C"],
+        price: "~110€",
+        link: "https://www.amazon.de/dp/B0DHVN8RFR?tag=tapu",
+        pick: false,
+      },
+      {
+        id: "asus-zenscreen-2k",
+        badge: "High-End",
+        title: "ASUS ZenScreen MB16QHG",
+        subtitle: "15.6\" · 2K · 120Hz · HDR 400",
+        description: "2560×1600 für mehr Platz, 120Hz für Butter-smooth Scrolling, HDR für Content Creator. Das Beste was es gibt.",
+        features: ["2K WQXGA Auflösung", "120Hz Refresh Rate", "DisplayHDR 400", "USB-C + HDMI"],
+        price: "~310€",
+        link: "https://www.amazon.de/dp/B0CB8BBK8Q?tag=tapu",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "Rucksack",
+    emoji: "🎒",
+    products: [
+      {
+        id: "peak-design-30l",
+        badge: "Gold Standard",
+        title: "Peak Design Travel 30L v2",
+        subtitle: "27–33L · Weatherproof · Rear Access",
+        description: "DER Rucksack für digitale Nomaden. Expandiert von 27L auf 33L. Laptop-Fach von hinten erreichbar. Wetterfest. Carry-on Größe weltweit.",
+        features: ["Expandierbar 27–33L", "Weatherproof 400D Nylon", "Rear Access Laptop", "Carry-on kompatibel"],
+        price: "~265€",
+        link: "https://www.amazon.de/dp/B0DDL4J41D?tag=tapu",
+        pick: true,
+      },
+      {
+        id: "peak-design-45l",
+        badge: "One-Bag Travel",
+        title: "Peak Design Travel 45L",
+        subtitle: "35–45L · Suitcase-Style · Packing Cubes",
+        description: "Öffnet sich wie ein Koffer. 45L für 1–2 Wochen, komprimiert auf Carry-on Größe. Die One-Bag-Travel Lösung.",
+        features: ["Komprimiert auf 35L", "Suitcase-Style Öffnung", "Packing Cube System", "Weatherproof"],
+        price: "~295€",
+        link: "https://www.amazon.de/dp/B07GH4PBWM?tag=tapu",
+        pick: false,
+      },
+      {
+        id: "nomatic-travel-30l",
+        badge: "Smart Features",
+        title: "NOMATIC Travel Pack 30L",
+        subtitle: "20–30L · RFID-Safe · 20+ Features",
+        description: "RFID-Schutz für Pässe, expandiert von 20L auf 30L, über 20 Organisationsfächer. Anti-Diebstahl durchdacht.",
+        features: ["RFID-Safe Pocket", "Expandiert 20–30L", "20+ Organisationsfächer", "Wasserabweisend"],
+        price: "~230€",
+        link: "https://www.amazon.de/dp/B07782GG5T?tag=tapu",
+        pick: false,
+      },
+    ],
+  },
+];
+---
+
+<Layout title="Digital Nomad Gear Guide — Beach Money Team" description="Die besten Tools und Gadgets für digitale Nomaden. Getestet auf Koh Phangan, ehrlich bewertet. MacBook, Kopfhörer, Powerbank, Monitor und mehr.">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-ocean-900/70 border-b border-ocean-700/30">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <span class="text-2xl">🏝️</span>
+        <span class="font-display text-xl font-bold tracking-tight text-sand-100 group-hover:text-sunset-400 transition-colors">Beach Money</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-sand-300">
+        <a href="/" class="hover:text-sunset-400 transition-colors">Home</a>
+        <a href="/gear" class="text-sunset-400">Gear</a>
+      </div>
+      <a href="#" class="bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95">
+        Newsletter
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 via-ocean-800 to-ocean-900"></div>
+    <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-sunset-500/[0.06] rounded-full blur-[128px]"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-sunset-400 mb-4">Getestet &amp; Empfohlen</span>
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-sand-100 mb-6 text-pretty">
+        Digital Nomad<br>Gear Guide
+      </h1>
+      <p class="max-w-2xl mx-auto text-lg text-sand-400 leading-relaxed text-pretty">
+        Alles was ich täglich auf Koh Phangan nutze. Jedes Produkt selbst getestet, ehrlich bewertet. Kein Bullshit, nur das was wirklich funktioniert.
+      </p>
+    </div>
+  </section>
+
+  <!-- Category Navigation -->
+  <div class="sticky top-[65px] z-30 backdrop-blur-xl bg-ocean-900/80 border-b border-ocean-700/30">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex gap-3 overflow-x-auto scrollbar-hide">
+      {categories.map((cat) => (
+        <a
+          href={`#${cat.name.toLowerCase().replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ä/g, 'ae')}`}
+          class="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-sand-400 hover:text-sand-200 bg-ocean-800/50 hover:bg-ocean-700/50 border border-ocean-600/20 transition-all"
+        >
+          <span>{cat.emoji}</span>
+          <span>{cat.name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Product Sections -->
+  <main class="relative pb-24">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 to-ocean-800"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      {categories.map((category) => (
+        <section
+          id={category.name.toLowerCase().replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ä/g, 'ae')}
+          class="pt-20 scroll-mt-32"
+        >
+          <div class="flex items-center gap-4 mb-10">
+            <span class="text-3xl">{category.emoji}</span>
+            <h2 class="font-display text-3xl font-black text-sand-100">{category.name}</h2>
+          </div>
+
+          <div class="space-y-6">
+            {category.products.map((product) => (
+              <article class="group relative">
+                {product.pick && (
+                  <div class="absolute -inset-px rounded-2xl bg-gradient-to-r from-sunset-500/30 to-sunset-600/10 blur-sm"></div>
+                )}
+                <div class={`relative bg-ocean-800/80 backdrop-blur-sm border rounded-2xl p-6 md:p-8 transition-all duration-300 group-hover:border-ocean-500/50 ${product.pick ? 'border-sunset-500/30' : 'border-ocean-600/30'}`}>
+                  <div class="flex flex-col md:flex-row md:items-start gap-6">
+                    <!-- Left: Content -->
+                    <div class="flex-1 min-w-0">
+                      <div class="flex flex-wrap items-center gap-3 mb-3">
+                        <span class={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${product.pick ? 'bg-sunset-500/20 text-sunset-400' : 'bg-ocean-600/30 text-sand-400'}`}>
+                          {product.badge}
+                        </span>
+                        {product.pick && (
+                          <span class="text-[10px] font-bold uppercase tracking-wider text-seafoam">Meine Empfehlung</span>
+                        )}
+                      </div>
+                      <h3 class="font-display text-xl md:text-2xl font-bold text-sand-100 mb-1">{product.title}</h3>
+                      <p class="text-sm text-sand-500 mb-3">{product.subtitle}</p>
+                      <p class="text-sand-400 text-sm leading-relaxed mb-4">{product.description}</p>
+
+                      <ul class="flex flex-wrap gap-2 mb-4">
+                        {product.features.map((feature) => (
+                          <li class="flex items-center gap-1.5 text-xs text-sand-500 bg-ocean-700/30 px-2.5 py-1 rounded-full">
+                            <span class="text-seafoam text-[8px]">&#9679;</span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <!-- Right: Price + CTA -->
+                    <div class="shrink-0 flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-3 md:text-right">
+                      <div class="text-2xl font-bold text-sand-200 font-display">{product.price}</div>
+                      <a
+                        href={product.link}
+                        data-affiliate-id={product.id}
+                        data-product-name={product.title}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 ${product.pick ? 'bg-sunset-500 hover:bg-sunset-400 text-ocean-900 hover:shadow-[0_0_30px_rgba(255,140,26,0.2)]' : 'bg-ocean-600/50 hover:bg-ocean-500/50 text-sand-200'}`}
+                      >
+                        Bei Amazon ansehen
+                        <span class="text-xs">&#8599;</span>
+                      </a>
+                      <span class="text-[10px] text-sand-600 uppercase tracking-wider">Amazon Associates</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+
+  <!-- Affiliate Disclaimer -->
+  <section class="border-t border-ocean-700/30 py-16 bg-ocean-900">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <p class="text-sm text-sand-500 leading-relaxed">
+        * Alle Links auf dieser Seite sind Affiliate-Links (Amazon Associates, tag: tapu). Wenn du über diese Links kaufst, erhalte ich eine kleine Provision — für dich ändert sich am Preis nichts. Ich empfehle nur Produkte die ich selbst nutze und getestet habe.
+        <a href="/affiliate-disclaimer" class="text-sunset-400 hover:text-sunset-300 underline underline-offset-2 ml-1">Mehr erfahren</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-ocean-700/30 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span class="text-xl">🏝️</span>
+          <span class="font-display font-bold text-sand-300">Beach Money Team</span>
+        </div>
+        <div class="flex items-center gap-6 text-sm text-sand-500">
+          <a href="/impressum" class="hover:text-sunset-400 transition-colors">Impressum</a>
+          <a href="/datenschutz" class="hover:text-sunset-400 transition-colors">Datenschutz</a>
+          <a href="/affiliate-disclaimer" class="hover:text-sunset-400 transition-colors">Affiliate Hinweis</a>
+        </div>
+        <p class="text-xs text-sand-600">&copy; 2026 Beach Money Team. Made with 🦀 on Koh Phangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Affiliate Click Tracking Script -->
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest('[data-affiliate-id]') as HTMLElement | null;
+      if (!link) return;
+
+      const data = {
+        id: link.dataset.affiliateId,
+        product: link.dataset.productName,
+        timestamp: new Date().toISOString(),
+        referrer: document.referrer,
+        path: window.location.pathname
+      };
+
+      const clicks = JSON.parse(localStorage.getItem('bmt_clicks') || '[]');
+      clicks.push(data);
+      localStorage.setItem('bmt_clicks', JSON.stringify(clicks));
+
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('/api/track', JSON.stringify(data));
+      }
+    });
+  </script>
+</Layout>
