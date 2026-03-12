@@ -14,6 +14,7 @@ const affiliates = [
     commission: "1–10%",
     tag: "Amazon Associates",
     link: "https://www.amazon.de/Apple-MacBook-10%E2%80%91Core-Gemeinsamer-Arbeitsspeicher/dp/B0DZDCH45Q?th=1&currency=EUR&linkCode=ll2&tag=tapu&linkId=800d70a247d34f38d7919ce90201651b&ref_=as_li_ss_tl",
+    image: "/images/products/macbook-air-m4.png",
     gradient: "from-ocean-600 to-ocean-800",
     iconBg: "bg-ocean-400/20",
     icon: "laptop",
@@ -30,6 +31,7 @@ const affiliates = [
     commission: "1–10%",
     tag: "Amazon Associates",
     link: "https://www.amazon.de/dp/B09Y2MYL5C?tag=tapu",
+    image: "/images/products/sony-wh1000xm5.png",
     gradient: "from-palm-600 to-palm-800",
     iconBg: "bg-palm-400/20",
     icon: "headphones",
@@ -46,6 +48,7 @@ const affiliates = [
     commission: "1–10%",
     tag: "Amazon Associates",
     link: "https://www.amazon.de/dp/B0CXDXP8VR?tag=tapu",
+    image: "/images/products/anker-20k-powerbank.png",
     gradient: "from-sunset-500 to-sunset-700",
     iconBg: "bg-sunset-400/20",
     icon: "battery",
@@ -216,7 +219,14 @@ const affiliates = [
         {affiliates.map((item) => (
           <article class="group relative">
             <div class={`absolute -inset-px rounded-2xl bg-gradient-to-b ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`}></div>
-            <div class="relative bg-ocean-800/80 backdrop-blur-sm border border-ocean-600/30 rounded-2xl p-8 h-full flex flex-col group-hover:border-ocean-500/50 transition-all duration-500">
+            <div class="relative bg-ocean-800/80 backdrop-blur-sm border border-ocean-600/30 rounded-2xl overflow-hidden h-full flex flex-col group-hover:border-ocean-500/50 transition-all duration-500">
+              <!-- Product Image -->
+              <div class="relative aspect-square overflow-hidden">
+                <img src={item.image} alt={item.title} width="400" height="400" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ocean-800/80 via-transparent to-transparent"></div>
+              </div>
+
+              <div class="p-8 flex flex-col flex-grow">
               <!-- Header -->
               <div class="flex items-start justify-between mb-6">
                 <div class="flex items-center gap-3">
@@ -267,6 +277,7 @@ const affiliates = [
                   Ansehen
                   <span class="text-xs">&#8599;</span>
                 </a>
+              </div>
               </div>
             </div>
           </article>
