@@ -19,36 +19,36 @@ const affiliates = [
     icon: "laptop",
   },
   {
-    id: "nordvpn-security",
-    category: "Security",
+    id: "sony-wh1000xm5",
+    category: "Kopfhörer",
     badge: "Essential",
-    title: "NordVPN",
-    subtitle: "Deine digitale Festung unterwegs",
-    description: "Öffentliches WiFi in Thailand? Banking aus Vietnam? Ohne VPN bist du nackt im Netz. Nord ist schnell, zuverlässig und hat Server überall.",
-    features: ["6.000+ Server weltweit", "Kill Switch", "Bis zu 10 Geräte", "30 Tage Geld-zurück"],
-    price: "ab 3,49€/Monat",
-    commission: "20–50%",
-    tag: "SaaS Affiliate",
-    link: "#",
+    title: "Sony WH-1000XM5",
+    subtitle: "Noise Cancelling für Fokus überall",
+    description: "Bestes ANC auf dem Markt. 30h Akku, kristallklare Calls mit 8 Mikros, Multipoint Bluetooth. Mein Coworking-Survival-Tool — ohne die Dinger könnte ich nicht arbeiten.",
+    features: ["Best-in-Class ANC", "30h Akkulaufzeit", "8 Mikrofone für Calls", "Multipoint Bluetooth"],
+    price: "~219€",
+    commission: "1–10%",
+    tag: "Amazon Associates",
+    link: "https://www.amazon.de/dp/B09Y2MYL5C?tag=tapu",
     gradient: "from-palm-600 to-palm-800",
     iconBg: "bg-palm-400/20",
-    icon: "shield",
+    icon: "headphones",
   },
   {
-    id: "wise-banking",
-    category: "Banking",
+    id: "anker-20k-87w",
+    category: "Powerbank",
     badge: "Game Changer",
-    title: "Wise (TransferWise)",
-    subtitle: "Banking ohne Grenzen",
-    description: "Echte Wechselkurse, Multi-Currency-Konto, Debitkarte die überall funktioniert. Spart mir jeden Monat hunderte Euro an Gebühren.",
-    features: ["Echter Wechselkurs", "50+ Währungen", "Kostenlose Debitkarte", "Kein Auslandsgebühr"],
-    price: "Kostenlos starten",
-    commission: "Recurring",
-    tag: "Fintech Affiliate",
-    link: "#",
+    title: "Anker 20.000mAh (87W)",
+    subtitle: "Dein MacBook überall laden",
+    description: "Built-in USB-C Kabel, 65W Output — lädt dein MacBook in 39 Min auf 50%. Drei Geräte gleichzeitig. Für ~40€ ein absoluter No-Brainer.",
+    features: ["87W Max Output", "Built-in USB-C Kabel", "3 Ports gleichzeitig", "MacBook-kompatibel"],
+    price: "~40€",
+    commission: "1–10%",
+    tag: "Amazon Associates",
+    link: "https://www.amazon.de/dp/B0CXDXP8VR?tag=tapu",
     gradient: "from-sunset-500 to-sunset-700",
     iconBg: "bg-sunset-400/20",
-    icon: "card",
+    icon: "battery",
   }
 ];
 ---
@@ -222,8 +222,8 @@ const affiliates = [
                 <div class="flex items-center gap-3">
                   <div class={`size-12 rounded-xl ${item.iconBg} flex items-center justify-center text-2xl`}>
                     {item.icon === 'laptop' && '💻'}
-                    {item.icon === 'shield' && '🛡️'}
-                    {item.icon === 'card' && '💳'}
+                    {item.icon === 'headphones' && '🎧'}
+                    {item.icon === 'battery' && '🔋'}
                   </div>
                   <div>
                     <span class="text-xs font-bold uppercase tracking-wider text-sand-500">{item.category}</span>
