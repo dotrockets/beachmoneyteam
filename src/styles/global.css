@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sand-50: #fdf8f0;
+  --color-sand-100: #f5ead6;
+  --color-sand-200: #e8d5b0;
+  --color-sand-300: #d4b87a;
+  --color-sand-400: #c49a4e;
+  --color-sand-500: #a67c3b;
+  --color-sand-600: #8a6430;
+  --color-sand-700: #6d4e26;
+  --color-sand-800: #4a3419;
+  --color-sand-900: #2d1f0f;
+
+  --color-ocean-50: #f0f9fc;
+  --color-ocean-100: #d4eff7;
+  --color-ocean-200: #a3ddef;
+  --color-ocean-300: #5ec4e3;
+  --color-ocean-400: #2ba8d1;
+  --color-ocean-500: #1a8ab3;
+  --color-ocean-600: #156e8f;
+  --color-ocean-700: #12576f;
+  --color-ocean-800: #0e4050;
+  --color-ocean-900: #0a2c37;
+
+  --color-palm-50: #f2fbf0;
+  --color-palm-100: #d6f2d0;
+  --color-palm-200: #a8e29c;
+  --color-palm-300: #6dca5b;
+  --color-palm-400: #44a832;
+  --color-palm-500: #328724;
+  --color-palm-600: #276b1c;
+  --color-palm-700: #1e5216;
+  --color-palm-800: #153a10;
+  --color-palm-900: #0e270b;
+
+  --color-sunset-50: #fff7ed;
+  --color-sunset-100: #ffe8cc;
+  --color-sunset-200: #ffd099;
+  --color-sunset-300: #ffb05c;
+  --color-sunset-400: #ff8c1a;
+  --color-sunset-500: #e67300;
+  --color-sunset-600: #b35900;
+  --color-sunset-700: #804000;
+  --color-sunset-800: #4d2600;
+  --color-sunset-900: #331a00;
+
+  --color-coral: #ff6b6b;
+  --color-seafoam: #69db7c;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+}

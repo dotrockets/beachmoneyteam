@@ -1,0 +1,360 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const affiliates = [
+  {
+    id: "macbook-pro-m4",
+    category: "Hardware",
+    badge: "Top Pick",
+    title: "MacBook Pro M4",
+    subtitle: "Das ultimative Nomaden-Laptop",
+    description: "16h Akku, unfassbar schnell, wiegt nichts. Das Ding hat mein Remote-Leben verändert. Von Bali-Cafés bis Coworking-Spaces — läuft überall.",
+    features: ["16h+ Akkulaufzeit", "Retina Display", "Thunderbolt 4", "macOS Ecosystem"],
+    price: "ab 1.799€",
+    commission: "1–10%",
+    tag: "Amazon Associates",
+    link: "#",
+    gradient: "from-ocean-600 to-ocean-800",
+    iconBg: "bg-ocean-400/20",
+    icon: "laptop",
+  },
+  {
+    id: "nordvpn-security",
+    category: "Security",
+    badge: "Essential",
+    title: "NordVPN",
+    subtitle: "Deine digitale Festung unterwegs",
+    description: "Öffentliches WiFi in Thailand? Banking aus Vietnam? Ohne VPN bist du nackt im Netz. Nord ist schnell, zuverlässig und hat Server überall.",
+    features: ["6.000+ Server weltweit", "Kill Switch", "Bis zu 10 Geräte", "30 Tage Geld-zurück"],
+    price: "ab 3,49€/Monat",
+    commission: "20–50%",
+    tag: "SaaS Affiliate",
+    link: "#",
+    gradient: "from-palm-600 to-palm-800",
+    iconBg: "bg-palm-400/20",
+    icon: "shield",
+  },
+  {
+    id: "wise-banking",
+    category: "Banking",
+    badge: "Game Changer",
+    title: "Wise (TransferWise)",
+    subtitle: "Banking ohne Grenzen",
+    description: "Echte Wechselkurse, Multi-Currency-Konto, Debitkarte die überall funktioniert. Spart mir jeden Monat hunderte Euro an Gebühren.",
+    features: ["Echter Wechselkurs", "50+ Währungen", "Kostenlose Debitkarte", "Kein Auslandsgebühr"],
+    price: "Kostenlos starten",
+    commission: "Recurring",
+    tag: "Fintech Affiliate",
+    link: "#",
+    gradient: "from-sunset-500 to-sunset-700",
+    iconBg: "bg-sunset-400/20",
+    icon: "card",
+  }
+];
+---
+
+<Layout>
+  <!-- Grain Overlay -->
+  <div class="fixed inset-0 pointer-events-none z-50 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E'); background-repeat: repeat; background-size: 256px;"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-ocean-900/70 border-b border-ocean-700/30">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <span class="text-2xl">🏝️</span>
+        <span class="font-display text-xl font-bold tracking-tight text-sand-100 group-hover:text-sunset-400 transition-colors">Beach Money</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-sand-300">
+        <a href="#tools" class="hover:text-sunset-400 transition-colors">Tools</a>
+        <a href="#story" class="hover:text-sunset-400 transition-colors">Story</a>
+        <a href="#start" class="hover:text-sunset-400 transition-colors">Starten</a>
+      </div>
+      <a href="#tools" class="bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95">
+        Jetzt starten
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <!-- Animated gradient background -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 via-ocean-800 to-ocean-900"></div>
+      <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-ocean-500/10 rounded-full blur-[128px] animate-pulse" style="animation-duration: 8s;"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-sunset-500/[0.08] rounded-full blur-[128px] animate-pulse" style="animation-duration: 12s; animation-delay: 2s;"></div>
+      <div class="absolute top-1/3 right-1/3 w-[400px] h-[400px] bg-palm-500/[0.06] rounded-full blur-[128px] animate-pulse" style="animation-duration: 10s; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Wave decoration -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" preserveAspectRatio="none">
+        <path d="M0 60C240 120 480 0 720 60C960 120 1200 0 1440 60V120H0V60Z" fill="rgba(10,44,55,0.5)"/>
+        <path d="M0 80C240 30 480 100 720 50C960 0 1200 80 1440 40V120H0V80Z" fill="rgba(10,44,55,0.8)"/>
+      </svg>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <!-- Tagline pill -->
+      <div class="inline-flex items-center gap-2 bg-ocean-700/50 backdrop-blur-sm border border-ocean-500/20 rounded-full px-5 py-2 mb-8 text-sm text-ocean-200">
+        <span class="inline-block w-2 h-2 rounded-full bg-seafoam animate-pulse"></span>
+        Live from Koh Phangan, Thailand
+      </div>
+
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-8">
+        <span class="block text-sand-100">Dein Bürojob</span>
+        <span class="block text-sand-100/40">war gestern.</span>
+        <span class="block mt-2 bg-gradient-to-r from-sunset-400 via-sunset-300 to-sand-200 bg-clip-text text-transparent">Deine Freiheit</span>
+        <span class="block bg-gradient-to-r from-sunset-400 via-sunset-300 to-sand-200 bg-clip-text text-transparent">startet jetzt.</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-lg md:text-xl text-sand-300 leading-relaxed mb-10 text-pretty">
+        Ich lebe auf einer Insel in Thailand und verdiene online. Hier sind die exakten Tools die das möglich machen — getestet, ehrlich bewertet, keine&nbsp;Bullshit-Versprechen.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#tools" class="group relative bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_40px_rgba(255,140,26,0.3)]">
+          Die 3 Tools die alles verändert haben
+          <span class="inline-block ml-2 group-hover:translate-y-0.5 transition-transform">&#8595;</span>
+        </a>
+      </div>
+
+      <!-- Social proof -->
+      <div class="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-sand-400">
+        <div class="flex items-center gap-2">
+          <span class="text-sunset-400 font-bold text-xl font-display">2+ Jahre</span>
+          <span>Digital Nomad</span>
+        </div>
+        <div class="w-px h-6 bg-ocean-600 hidden sm:block"></div>
+        <div class="flex items-center gap-2">
+          <span class="text-sunset-400 font-bold text-xl font-display">12+</span>
+          <span>Länder bereist</span>
+        </div>
+        <div class="w-px h-6 bg-ocean-600 hidden sm:block"></div>
+        <div class="flex items-center gap-2">
+          <span class="text-sunset-400 font-bold text-xl font-display">100%</span>
+          <span>Remote Income</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section id="story" class="relative py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 via-ocean-800/50 to-ocean-900"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[1fr_2px_1fr] gap-12 items-start">
+        <!-- Before -->
+        <div class="space-y-6">
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-coral/80 bg-coral/10 px-3 py-1 rounded-full">Vorher</span>
+          <h3 class="font-display text-3xl font-bold text-sand-200">9-to-5 in Deutschland</h3>
+          <ul class="space-y-4 text-sand-400">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-coral shrink-0">&#10005;</span>
+              <span>Jeden Morgen im Stau stehen</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-coral shrink-0">&#10005;</span>
+              <span>Für anderer Leute Träume arbeiten</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-coral shrink-0">&#10005;</span>
+              <span>2 Wochen Urlaub als "Freiheit"</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-coral shrink-0">&#10005;</span>
+              <span>Immer das Gefühl: da muss mehr sein</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Divider -->
+        <div class="hidden md:block bg-gradient-to-b from-transparent via-sunset-500/50 to-transparent h-full"></div>
+
+        <!-- After -->
+        <div class="space-y-6">
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-seafoam/80 bg-seafoam/10 px-3 py-1 rounded-full">Jetzt</span>
+          <h3 class="font-display text-3xl font-bold text-sand-200">Remote auf Koh Phangan</h3>
+          <ul class="space-y-4 text-sand-300">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-seafoam shrink-0">&#10003;</span>
+              <span>Aufwachen wann ich will, Laptop auf</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-seafoam shrink-0">&#10003;</span>
+              <span>Revenue-Streams die 24/7 laufen</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-seafoam shrink-0">&#10003;</span>
+              <span>Strand in 5 Minuten, Coworking in 10</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-seafoam shrink-0">&#10003;</span>
+              <span>Mein Leben, meine Regeln, mein Tempo</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools" class="relative py-32">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 to-ocean-800"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-sunset-400 mb-4">Mein Stack</span>
+        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-black text-sand-100 mb-6 text-pretty">
+          3 Tools. Ein neues Leben.
+        </h2>
+        <p class="max-w-xl mx-auto text-sand-400 text-lg">
+          Keine endlose Liste. Nur das was wirklich funktioniert und was ich jeden Tag selbst benutze.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        {affiliates.map((item) => (
+          <article class="group relative">
+            <div class={`absolute -inset-px rounded-2xl bg-gradient-to-b ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`}></div>
+            <div class="relative bg-ocean-800/80 backdrop-blur-sm border border-ocean-600/30 rounded-2xl p-8 h-full flex flex-col group-hover:border-ocean-500/50 transition-all duration-500">
+              <!-- Header -->
+              <div class="flex items-start justify-between mb-6">
+                <div class="flex items-center gap-3">
+                  <div class={`size-12 rounded-xl ${item.iconBg} flex items-center justify-center text-2xl`}>
+                    {item.icon === 'laptop' && '💻'}
+                    {item.icon === 'shield' && '🛡️'}
+                    {item.icon === 'card' && '💳'}
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-sand-500">{item.category}</span>
+                    <div class="text-xs text-sand-600 mt-0.5">{item.tag}</div>
+                  </div>
+                </div>
+                <span class={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-gradient-to-r ${item.gradient} text-white`}>
+                  {item.badge}
+                </span>
+              </div>
+
+              <!-- Content -->
+              <h3 class="font-display text-2xl font-bold text-sand-100 mb-1">{item.title}</h3>
+              <p class="text-sm text-sunset-400 font-medium mb-4">{item.subtitle}</p>
+              <p class="text-sand-400 text-sm leading-relaxed mb-6 flex-grow">{item.description}</p>
+
+              <!-- Features -->
+              <ul class="grid grid-cols-2 gap-2 mb-6">
+                {item.features.map((feature) => (
+                  <li class="flex items-center gap-1.5 text-xs text-sand-500">
+                    <span class="text-seafoam text-[10px]">&#9679;</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Price + CTA -->
+              <div class="pt-6 border-t border-ocean-700/50 flex items-center justify-between">
+                <div>
+                  <div class="text-lg font-bold text-sand-200">{item.price}</div>
+                  <div class="text-[10px] text-sand-600 uppercase tracking-wider">Provision: {item.commission}</div>
+                </div>
+                <a
+                  href={item.link}
+                  data-affiliate-id={item.id}
+                  data-product-name={item.title}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`inline-flex items-center gap-2 bg-gradient-to-r ${item.gradient} text-white px-5 py-2.5 rounded-full text-sm font-bold hover:scale-105 active:scale-95 transition-all hover:shadow-lg`}
+                >
+                  Ansehen
+                  <span class="text-xs">&#8599;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="text-center text-xs text-sand-600 mt-12 max-w-lg mx-auto">
+        * Die Links auf dieser Seite sind Affiliate-Links. Wenn du darüber kaufst, bekomme ich eine kleine Provision — für dich ändert sich am Preis nichts. Ich empfehle nur was ich selbst nutze.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA / Newsletter Section -->
+  <section id="start" class="relative py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-800 via-ocean-900 to-ocean-900"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(230,115,0,0.08),transparent_70%)]"></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
+      <span class="inline-block text-5xl mb-6">🦀</span>
+      <h2 class="font-display text-4xl md:text-5xl font-black text-sand-100 mb-6 text-pretty">
+        Bereit für dein Beach&nbsp;Money?
+      </h2>
+      <p class="text-sand-400 text-lg mb-10 leading-relaxed">
+        Ich teile jede Woche was funktioniert, was nicht, und welche neuen Revenue-Streams ich aufbaue. Kein Spam, kein Hype — nur echte Insights aus dem Nomaden-Leben.
+      </p>
+
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="#" method="POST">
+        <label for="email" class="sr-only">E-Mail Adresse</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          autocomplete="email"
+          placeholder="deine@email.de"
+          spellcheck="false"
+          required
+          class="flex-1 bg-ocean-800 border border-ocean-600/50 rounded-full px-6 py-3.5 text-sand-200 placeholder:text-sand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset-500 focus-visible:border-transparent transition-all"
+        />
+        <button
+          type="submit"
+          class="bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-8 py-3.5 rounded-full font-bold transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_30px_rgba(255,140,26,0.25)] whitespace-nowrap"
+        >
+          Ich bin dabei
+        </button>
+      </form>
+
+      <p class="text-xs text-sand-600 mt-4">Kein Spam. Jederzeit abbestellbar. Deine Daten bleiben bei dir.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-ocean-700/30 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span class="text-xl">🏝️</span>
+          <span class="font-display font-bold text-sand-300">Beach Money Team</span>
+        </div>
+        <div class="flex items-center gap-6 text-sm text-sand-500">
+          <a href="/impressum" class="hover:text-sunset-400 transition-colors">Impressum</a>
+          <a href="/datenschutz" class="hover:text-sunset-400 transition-colors">Datenschutz</a>
+          <a href="/affiliate-disclaimer" class="hover:text-sunset-400 transition-colors">Affiliate Hinweis</a>
+        </div>
+        <p class="text-xs text-sand-600">&copy; 2026 Beach Money Team. Made with 🦀 on Koh Phangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Affiliate Click Tracking Script -->
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest('[data-affiliate-id]') as HTMLElement | null;
+      if (!link) return;
+
+      const data = {
+        id: link.dataset.affiliateId,
+        product: link.dataset.productName,
+        timestamp: new Date().toISOString(),
+        referrer: document.referrer,
+        path: window.location.pathname
+      };
+
+      const clicks = JSON.parse(localStorage.getItem('bmt_clicks') || '[]');
+      clicks.push(data);
+      localStorage.setItem('bmt_clicks', JSON.stringify(clicks));
+
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('/api/track', JSON.stringify(data));
+      }
+    });
+  </script>
+</Layout>
