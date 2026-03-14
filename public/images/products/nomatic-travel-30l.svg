@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0a2c37"/>
+      <stop offset="50%" stop-color="#0e4050"/>
+      <stop offset="100%" stop-color="#12576f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="48%" r="40%">
+      <stop offset="0%" stop-color="#12576f" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="packGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8d5b0" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#e8d5b0" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="400" height="400" rx="24" fill="url(#glow)"/>
+  <!-- Backpack body - sleek, modern 30L -->
+  <path d="M148 90 Q145 85 150 82 L250 82 Q255 85 252 90 L260 300 Q262 315 250 318 L150 318 Q138 315 140 300 Z" fill="url(#packGrad)"/>
+  <path d="M148 90 Q145 85 150 82 L250 82 Q255 85 252 90 L260 300 Q262 315 250 318 L150 318 Q138 315 140 300 Z" fill="none" stroke="#e8d5b0" stroke-width="2" opacity="0.75"/>
+  <!-- Top grab handle -->
+  <path d="M185 79 Q185 64 200 60 Q215 64 215 79" fill="none" stroke="#e8d5b0" stroke-width="4" stroke-linecap="round" opacity="0.65"/>
+  <!-- Diagonal front zipper - modern Nomatic style -->
+  <path d="M148 110 L252 170" fill="none" stroke="#e8d5b0" stroke-width="1.5" opacity="0.5"/>
+  <!-- Zipper pull -->
+  <rect x="245" y="166" width="10" height="6" rx="2" fill="#e8d5b0" opacity="0.3"/>
+  <!-- Top compartment -->
+  <path d="M150 90 L250 90" stroke="#e8d5b0" stroke-width="1" opacity="0.35"/>
+  <!-- Front panel - clean, no extra pockets (sleek design) -->
+  <rect x="155" y="185" width="90" height="65" rx="5" fill="#e8d5b0" opacity="0.05"/>
+  <rect x="155" y="185" width="90" height="65" rx="5" fill="none" stroke="#e8d5b0" stroke-width="1.2" opacity="0.35"/>
+  <!-- Hidden zipper line on front panel -->
+  <line x1="155" y1="218" x2="245" y2="218" stroke="#e8d5b0" stroke-width="0.8" opacity="0.25"/>
+  <!-- RFID pocket indicator -->
+  <rect x="160" y="270" width="35" height="28" rx="4" fill="#e8d5b0" opacity="0.04"/>
+  <rect x="160" y="270" width="35" height="28" rx="4" fill="none" stroke="#e8d5b0" stroke-width="1" opacity="0.25"/>
+  <!-- Water bottle pocket side bulge -->
+  <path d="M140 180 Q132 200 132 230 Q132 260 140 280" fill="none" stroke="#e8d5b0" stroke-width="1.5" opacity="0.3"/>
+  <!-- Shoulder strap hints -->
+  <path d="M155 85 Q140 90 135 110 Q130 140 132 160" fill="none" stroke="#e8d5b0" stroke-width="3" opacity="0.2"/>
+  <path d="M245 85 Q260 90 265 110 Q270 140 268 160" fill="none" stroke="#e8d5b0" stroke-width="3" opacity="0.2"/>
+  <!-- Sternum strap buckle -->
+  <rect x="133" y="145" width="6" height="8" rx="1.5" fill="none" stroke="#e8d5b0" stroke-width="1" opacity="0.25"/>
+  <rect x="261" y="145" width="6" height="8" rx="1.5" fill="none" stroke="#e8d5b0" stroke-width="1" opacity="0.25"/>
+  <!-- Subtle label -->
+  <text x="200" y="360" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e8d5b0" opacity="0.4" letter-spacing="3">TRAVEL BACKPACK</text>
+</svg>

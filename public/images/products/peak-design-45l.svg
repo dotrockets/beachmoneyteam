@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e4050"/>
+      <stop offset="40%" stop-color="#0a2c37"/>
+      <stop offset="100%" stop-color="#12576f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="48%" r="38%">
+      <stop offset="0%" stop-color="#12576f" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="packGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="400" height="400" rx="24" fill="url(#glow)"/>
+  <!-- Backpack body - large, structured 45L -->
+  <path d="M140 85 Q138 80 145 75 L255 75 Q262 80 260 85 L268 310 Q270 325 255 328 L145 328 Q130 325 132 310 Z" fill="url(#packGrad)"/>
+  <path d="M140 85 Q138 80 145 75 L255 75 Q262 80 260 85 L268 310 Q270 325 255 328 L145 328 Q130 325 132 310 Z" fill="none" stroke="white" stroke-width="2.5" opacity="0.75"/>
+  <!-- Top flap/roll-top -->
+  <path d="M143 85 L257 85" stroke="white" stroke-width="2" opacity="0.5"/>
+  <path d="M145 75 Q200 68 255 75" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/>
+  <!-- Top grab handle -->
+  <path d="M180 72 Q180 58 200 55 Q220 58 220 72" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <!-- Front pocket - large structured -->
+  <rect x="150" y="155" width="100" height="90" rx="6" fill="white" opacity="0.06"/>
+  <rect x="150" y="155" width="100" height="90" rx="6" fill="none" stroke="white" stroke-width="1.5" opacity="0.45"/>
+  <!-- Front pocket zipper line -->
+  <line x1="155" y1="155" x2="245" y2="155" stroke="white" stroke-width="1" opacity="0.35"/>
+  <!-- Side compression straps -->
+  <line x1="135" y1="140" x2="135" y2="280" stroke="white" stroke-width="2" opacity="0.25" stroke-dasharray="8 12"/>
+  <line x1="265" y1="140" x2="265" y2="280" stroke="white" stroke-width="2" opacity="0.25" stroke-dasharray="8 12"/>
+  <!-- Strap buckle details -->
+  <rect x="131" y="180" width="8" height="12" rx="2" fill="none" stroke="white" stroke-width="1" opacity="0.3"/>
+  <rect x="261" y="180" width="8" height="12" rx="2" fill="none" stroke="white" stroke-width="1" opacity="0.3"/>
+  <!-- Lower front pocket -->
+  <rect x="155" y="268" width="90" height="40" rx="5" fill="white" opacity="0.04"/>
+  <rect x="155" y="268" width="90" height="40" rx="5" fill="none" stroke="white" stroke-width="1" opacity="0.3"/>
+  <!-- Peak Design anchor links -->
+  <circle cx="170" cy="140" r="4" fill="none" stroke="white" stroke-width="1.2" opacity="0.35"/>
+  <circle cx="230" cy="140" r="4" fill="none" stroke="white" stroke-width="1.2" opacity="0.35"/>
+  <!-- Subtle label -->
+  <text x="200" y="365" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="white" opacity="0.35" letter-spacing="3">TRAVEL BACKPACK</text>
+</svg>

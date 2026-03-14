@@ -1,0 +1,86 @@
+---
+interface Props {
+  active?: 'home' | 'gear' | 'blog' | 'about';
+}
+
+const { active } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Home', id: 'home' as const },
+  { href: '/gear', label: 'Gear Guide', id: 'gear' as const },
+  { href: '/blog', label: 'Blog', id: 'blog' as const },
+  { href: '/about', label: 'About', id: 'about' as const },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-ocean-900/70 border-b border-ocean-700/30">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group">
+      <span class="text-2xl">🏝️</span>
+      <span class="font-display text-xl font-bold tracking-tight text-sand-100 group-hover:text-sunset-400 transition-colors">Beach Money</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-sand-300">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class={active === link.id ? 'text-sunset-400' : 'hover:text-sunset-400 transition-colors'}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+    <a href="/#start" class="hidden md:inline-flex bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95">
+      Newsletter
+    </a>
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menü öffnen" aria-expanded="false">
+      <span class="block w-6 h-0.5 bg-sand-200 transition-all origin-center" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-sand-200 transition-all" id="bar2"></span>
+      <span class="block w-6 h-0.5 bg-sand-200 transition-all origin-center" id="bar3"></span>
+    </button>
+  </div>
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu" class="md:hidden hidden border-t border-ocean-700/30 bg-ocean-900/95 backdrop-blur-xl">
+    <div class="px-6 py-6 flex flex-col gap-4 text-base font-medium text-sand-300">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class={`py-2 ${active === link.id ? 'text-sunset-400' : 'hover:text-sunset-400 transition-colors'}`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/#start" class="bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-5 py-3 rounded-full text-sm font-bold text-center transition-all mt-2">
+        Newsletter
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    bar1?.classList.toggle('rotate-45', isOpen);
+    bar1?.classList.toggle('translate-y-[4px]', isOpen);
+    bar2?.classList.toggle('opacity-0', isOpen);
+    bar3?.classList.toggle('-rotate-45', isOpen);
+    bar3?.classList.toggle('-translate-y-[4px]', isOpen);
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-[4px]');
+    });
+  });
+</script>

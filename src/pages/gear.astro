@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 
 const categories = [
   {
@@ -45,6 +47,7 @@ const categories = [
         features: ["Pro-Level ANC", "Spatial Audio", "USB-C Charging", "Apple Ecosystem"],
         price: "~479€",
         link: "https://www.amazon.de/dp/B0DGHXBDQQ?tag=tapu",
+        image: "/images/products/airpods-max.svg",
         pick: false,
       },
       {
@@ -56,6 +59,7 @@ const categories = [
         features: ["3 ANC-Modi", "Immersive Audio", "24h Akku", "Bluetooth 5.3"],
         price: "~299€",
         link: "https://www.amazon.de/dp/B0CCZ1L489?tag=tapu",
+        image: "/images/products/bose-qc-ultra.svg",
         pick: false,
       },
     ],
@@ -85,6 +89,7 @@ const categories = [
         features: ["250W Total Output", "140W PD 3.1", "Flugzeug-zugelassen", "Smart App Control"],
         price: "~150€",
         link: "https://www.amazon.de/dp/B0BYP2F3SG?tag=tapu",
+        image: "/images/products/anker-prime-27k.svg",
         pick: false,
       },
     ],
@@ -114,6 +119,7 @@ const categories = [
         features: ["Ultra-leicht", "3 Höhenstufen", "Premium Build", "Rutschfest"],
         price: "~75€",
         link: "https://www.amazon.de/dp/B01C9KG8IG?tag=tapu",
+        image: "/images/products/roost-v3.svg",
         pick: false,
       },
     ],
@@ -161,6 +167,7 @@ const categories = [
         features: ["Nur 700g", "4mm dünn", "Built-in Stand", "HDMI + 2× USB-C"],
         price: "~110€",
         link: "https://www.amazon.de/dp/B0DHVN8RFR?tag=tapu",
+        image: "/images/products/cocopar-monitor.svg",
         pick: false,
       },
       {
@@ -172,6 +179,7 @@ const categories = [
         features: ["2K WQXGA Auflösung", "120Hz Refresh Rate", "DisplayHDR 400", "USB-C + HDMI"],
         price: "~310€",
         link: "https://www.amazon.de/dp/B0CB8BBK8Q?tag=tapu",
+        image: "/images/products/asus-zenscreen-2k.svg",
         pick: false,
       },
     ],
@@ -201,6 +209,7 @@ const categories = [
         features: ["Komprimiert auf 35L", "Suitcase-Style Öffnung", "Packing Cube System", "Weatherproof"],
         price: "~295€",
         link: "https://www.amazon.de/dp/B07GH4PBWM?tag=tapu",
+        image: "/images/products/peak-design-45l.svg",
         pick: false,
       },
       {
@@ -212,6 +221,7 @@ const categories = [
         features: ["RFID-Safe Pocket", "Expandiert 20–30L", "20+ Organisationsfächer", "Wasserabweisend"],
         price: "~230€",
         link: "https://www.amazon.de/dp/B07782GG5T?tag=tapu",
+        image: "/images/products/nomatic-travel-30l.svg",
         pick: false,
       },
     ],
@@ -220,22 +230,7 @@ const categories = [
 ---
 
 <Layout title="Digital Nomad Gear Guide — Beach Money Team" description="Die besten Tools und Gadgets für digitale Nomaden. Getestet auf Koh Phangan, ehrlich bewertet. MacBook, Kopfhörer, Powerbank, Monitor und mehr.">
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-ocean-900/70 border-b border-ocean-700/30">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3 group">
-        <span class="text-2xl">🏝️</span>
-        <span class="font-display text-xl font-bold tracking-tight text-sand-100 group-hover:text-sunset-400 transition-colors">Beach Money</span>
-      </a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-sand-300">
-        <a href="/" class="hover:text-sunset-400 transition-colors">Home</a>
-        <a href="/gear" class="text-sunset-400">Gear</a>
-      </div>
-      <a href="#" class="bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95">
-        Newsletter
-      </a>
-    </div>
-  </nav>
+  <Nav active="gear" />
 
   <!-- Hero -->
   <section class="relative pt-32 pb-20 overflow-hidden">
@@ -291,12 +286,14 @@ const categories = [
                 )}
                 <div class={`relative bg-ocean-800/80 backdrop-blur-sm border rounded-2xl p-6 md:p-8 transition-all duration-300 group-hover:border-ocean-500/50 ${product.pick ? 'border-sunset-500/30' : 'border-ocean-600/30'}`}>
                   <div class="flex flex-col md:flex-row md:items-start gap-6">
-                    <!-- Product Image (Top Picks only) -->
-                    {product.image && (
-                      <div class="shrink-0 w-full md:w-40 aspect-square rounded-xl overflow-hidden bg-ocean-700/30">
+                    <!-- Product Image -->
+                    <div class="shrink-0 w-full md:w-40 aspect-square rounded-xl overflow-hidden bg-ocean-700/30">
+                      {product.image ? (
                         <img src={product.image} alt={product.title} width="160" height="160" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      </div>
-                    )}
+                      ) : (
+                        <div class="w-full h-full flex items-center justify-center text-5xl opacity-60">{category.emoji}</div>
+                      )}
+                    </div>
                     <!-- Content -->
                     <div class="flex-1 min-w-0">
                       <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -357,26 +354,11 @@ const categories = [
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-ocean-700/30 py-12">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <span class="text-xl">🏝️</span>
-          <span class="font-display font-bold text-sand-300">Beach Money Team</span>
-        </div>
-        <div class="flex items-center gap-6 text-sm text-sand-500">
-          <a href="/impressum" class="hover:text-sunset-400 transition-colors">Impressum</a>
-          <a href="/datenschutz" class="hover:text-sunset-400 transition-colors">Datenschutz</a>
-          <a href="/affiliate-disclaimer" class="hover:text-sunset-400 transition-colors">Affiliate Hinweis</a>
-        </div>
-        <p class="text-xs text-sand-600">&copy; 2026 Beach Money Team. Made with 🦀 on Koh Phangan.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 
-  <!-- Affiliate Click Tracking Script -->
+  <!-- Scripts -->
   <script>
+    // Affiliate Click Tracking
     document.addEventListener('click', (e) => {
       const link = (e.target as HTMLElement).closest('[data-affiliate-id]') as HTMLElement | null;
       if (!link) return;

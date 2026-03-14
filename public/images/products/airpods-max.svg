@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2c37"/>
+      <stop offset="50%" stop-color="#0e4050"/>
+      <stop offset="100%" stop-color="#12576f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#12576f" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="400" height="400" rx="24" fill="url(#glow)"/>
+  <!-- Headband -->
+  <path d="M140 150 Q145 90 200 75 Q255 90 260 150" fill="none" stroke="#e8d5b0" stroke-width="14" stroke-linecap="round" opacity="0.9"/>
+  <!-- Mesh top canopy -->
+  <path d="M155 130 Q200 115 245 130" fill="none" stroke="#e8d5b0" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  <path d="M150 140 Q200 125 250 140" fill="none" stroke="#e8d5b0" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <!-- Left arm -->
+  <path d="M140 150 L138 210" stroke="#e8d5b0" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+  <!-- Right arm -->
+  <path d="M260 150 L262 210" stroke="#e8d5b0" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+  <!-- Left ear cup -->
+  <rect x="112" y="195" width="56" height="80" rx="28" fill="#e8d5b0" opacity="0.15"/>
+  <rect x="112" y="195" width="56" height="80" rx="28" fill="none" stroke="#e8d5b0" stroke-width="3" opacity="0.85"/>
+  <ellipse cx="140" cy="235" rx="18" ry="26" fill="#e8d5b0" opacity="0.1"/>
+  <!-- Right ear cup -->
+  <rect x="232" y="195" width="56" height="80" rx="28" fill="#e8d5b0" opacity="0.15"/>
+  <rect x="232" y="195" width="56" height="80" rx="28" fill="none" stroke="#e8d5b0" stroke-width="3" opacity="0.85"/>
+  <ellipse cx="260" cy="235" rx="18" ry="26" fill="#e8d5b0" opacity="0.1"/>
+  <!-- Digital Crown on right cup -->
+  <circle cx="290" cy="230" r="6" fill="none" stroke="#e8d5b0" stroke-width="2" opacity="0.6"/>
+  <!-- Subtle label -->
+  <text x="200" y="340" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e8d5b0" opacity="0.4" letter-spacing="3">HEADPHONES</text>
+</svg>

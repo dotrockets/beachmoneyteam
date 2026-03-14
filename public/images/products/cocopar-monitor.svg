@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2c37"/>
+      <stop offset="60%" stop-color="#0e4050"/>
+      <stop offset="100%" stop-color="#12576f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#12576f" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="400" height="400" rx="24" fill="url(#glow)"/>
+  <!-- Monitor body - thin portable display -->
+  <rect x="85" y="95" width="230" height="150" rx="8" fill="url(#screen)"/>
+  <rect x="85" y="95" width="230" height="150" rx="8" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+  <!-- Screen area (inner bezel) -->
+  <rect x="93" y="103" width="214" height="130" rx="3" fill="white" opacity="0.05"/>
+  <rect x="93" y="103" width="214" height="130" rx="3" fill="none" stroke="white" stroke-width="0.8" opacity="0.3"/>
+  <!-- Screen content hint - subtle gradient bar -->
+  <rect x="110" y="140" width="80" height="3" rx="1.5" fill="white" opacity="0.15"/>
+  <rect x="110" y="150" width="55" height="3" rx="1.5" fill="white" opacity="0.1"/>
+  <rect x="110" y="160" width="65" height="3" rx="1.5" fill="white" opacity="0.08"/>
+  <!-- Bottom bezel - camera/logo dot -->
+  <circle cx="200" cy="240" r="2" fill="white" opacity="0.25"/>
+  <!-- Kickstand -->
+  <path d="M170 245 L165 290 Q165 295 170 295 L230 295 Q235 295 235 290 L230 245" fill="white" opacity="0.08"/>
+  <path d="M170 245 L165 290 Q165 295 170 295 L230 295 Q235 295 235 290 L230 245" fill="none" stroke="white" stroke-width="1.5" opacity="0.5"/>
+  <!-- Thin profile indicator line on side -->
+  <line x1="85" y1="165" x2="85" y2="175" stroke="white" stroke-width="2" opacity="0.3"/>
+  <!-- USB-C port on bottom edge -->
+  <rect x="190" y="243" width="20" height="5" rx="2" fill="none" stroke="white" stroke-width="1" opacity="0.4"/>
+  <!-- Subtle label -->
+  <text x="200" y="340" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="white" opacity="0.35" letter-spacing="3">PORTABLE MONITOR</text>
+</svg>

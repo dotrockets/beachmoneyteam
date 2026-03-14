@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12576f"/>
+      <stop offset="50%" stop-color="#0e4050"/>
+      <stop offset="100%" stop-color="#0a2c37"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#12576f" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="400" height="400" rx="24" fill="url(#glow)"/>
+  <!-- Laptop stand - V-shaped minimal design -->
+  <!-- Back support arm (left) -->
+  <line x1="145" y1="130" x2="155" y2="260" stroke="#e8d5b0" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+  <!-- Back support arm (right) -->
+  <line x1="255" y1="130" x2="245" y2="260" stroke="#e8d5b0" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+  <!-- Top cradle bar -->
+  <line x1="140" y1="130" x2="260" y2="130" stroke="#e8d5b0" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <!-- Front leg (left) -->
+  <line x1="155" y1="260" x2="130" y2="295" stroke="#e8d5b0" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+  <!-- Front leg (right) -->
+  <line x1="245" y1="260" x2="270" y2="295" stroke="#e8d5b0" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+  <!-- Bottom bar -->
+  <line x1="125" y1="295" x2="275" y2="295" stroke="#e8d5b0" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <!-- Hinge joint circles -->
+  <circle cx="155" cy="260" r="4" fill="#e8d5b0" opacity="0.4"/>
+  <circle cx="245" cy="260" r="4" fill="#e8d5b0" opacity="0.4"/>
+  <!-- Laptop silhouette resting on stand -->
+  <rect x="125" y="115" width="150" height="5" rx="2" fill="#e8d5b0" opacity="0.25"/>
+  <!-- Rubber feet dots -->
+  <circle cx="130" cy="298" r="3" fill="#e8d5b0" opacity="0.3"/>
+  <circle cx="270" cy="298" r="3" fill="#e8d5b0" opacity="0.3"/>
+  <!-- Subtle label -->
+  <text x="200" y="345" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e8d5b0" opacity="0.4" letter-spacing="3">LAPTOP STAND</text>
+</svg>

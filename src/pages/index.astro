@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 
 const affiliates = [
   {
@@ -60,24 +62,7 @@ const affiliates = [
   <!-- Grain Overlay -->
   <div class="fixed inset-0 pointer-events-none z-50 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E'); background-repeat: repeat; background-size: 256px;"></div>
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-ocean-900/70 border-b border-ocean-700/30">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3 group">
-        <span class="text-2xl">🏝️</span>
-        <span class="font-display text-xl font-bold tracking-tight text-sand-100 group-hover:text-sunset-400 transition-colors">Beach Money</span>
-      </a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-sand-300">
-        <a href="#tools" class="hover:text-sunset-400 transition-colors">Tools</a>
-        <a href="/gear" class="hover:text-sunset-400 transition-colors">Gear Guide</a>
-        <a href="#story" class="hover:text-sunset-400 transition-colors">Story</a>
-        <a href="#start" class="hover:text-sunset-400 transition-colors">Starten</a>
-      </div>
-      <a href="#tools" class="bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95">
-        Jetzt starten
-      </a>
-    </div>
-  </nav>
+  <Nav active="home" />
 
   <!-- Hero Section — Comic Style -->
   <section class="relative min-h-screen flex items-end justify-center overflow-hidden">
@@ -306,7 +291,7 @@ const affiliates = [
         Ich teile jede Woche was funktioniert, was nicht, und welche neuen Revenue-Streams ich aufbaue. Kein Spam, kein Hype — nur echte Insights aus dem Nomaden-Leben.
       </p>
 
-      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="#" method="POST">
+      <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
         <label for="email" class="sr-only">E-Mail Adresse</label>
         <input
           id="email"
@@ -320,36 +305,64 @@ const affiliates = [
         />
         <button
           type="submit"
+          id="newsletter-btn"
           class="bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-8 py-3.5 rounded-full font-bold transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_30px_rgba(255,140,26,0.25)] whitespace-nowrap"
         >
           Ich bin dabei
         </button>
       </form>
 
-      <p class="text-xs text-sand-600 mt-4">Kein Spam. Jederzeit abbestellbar. Deine Daten bleiben bei dir.</p>
+      <!-- Success/Error messages -->
+      <div id="newsletter-success" class="hidden mt-4 text-seafoam font-medium">Willkommen an Board! Check deine E-Mails.</div>
+      <div id="newsletter-error" class="hidden mt-4 text-coral font-medium"></div>
+
+      <p id="newsletter-hint" class="text-xs text-sand-600 mt-4">Kein Spam. Jederzeit abbestellbar. Deine Daten bleiben bei dir.</p>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-ocean-700/30 py-12">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <span class="text-xl">🏝️</span>
-          <span class="font-display font-bold text-sand-300">Beach Money Team</span>
-        </div>
-        <div class="flex items-center gap-6 text-sm text-sand-500">
-          <a href="/impressum" class="hover:text-sunset-400 transition-colors">Impressum</a>
-          <a href="/datenschutz" class="hover:text-sunset-400 transition-colors">Datenschutz</a>
-          <a href="/affiliate-disclaimer" class="hover:text-sunset-400 transition-colors">Affiliate Hinweis</a>
-        </div>
-        <p class="text-xs text-sand-600">&copy; 2026 Beach Money Team. Made with 🦀 on Koh Phangan.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 
-  <!-- Affiliate Click Tracking Script -->
+  <!-- Scripts -->
   <script>
+    // Newsletter Form
+    const form = document.getElementById('newsletter-form') as HTMLFormElement | null;
+    const btn = document.getElementById('newsletter-btn');
+    const successEl = document.getElementById('newsletter-success');
+    const errorEl = document.getElementById('newsletter-error');
+    const hintEl = document.getElementById('newsletter-hint');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!btn || !successEl || !errorEl || !hintEl) return;
+
+      btn.textContent = 'Wird gesendet...';
+      (btn as HTMLButtonElement).disabled = true;
+      errorEl.classList.add('hidden');
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch('/api/newsletter', { method: 'POST', body: formData });
+        const result = await res.json();
+
+        if (result.ok) {
+          form.classList.add('hidden');
+          hintEl.classList.add('hidden');
+          successEl.classList.remove('hidden');
+        } else {
+          errorEl.textContent = result.error || 'Etwas ist schiefgelaufen.';
+          errorEl.classList.remove('hidden');
+          btn.textContent = 'Ich bin dabei';
+          (btn as HTMLButtonElement).disabled = false;
+        }
+      } catch {
+        errorEl.textContent = 'Verbindungsfehler. Bitte versuche es erneut.';
+        errorEl.classList.remove('hidden');
+        btn.textContent = 'Ich bin dabei';
+        (btn as HTMLButtonElement).disabled = false;
+      }
+    });
+
+    // Affiliate Click Tracking
     document.addEventListener('click', (e) => {
       const link = (e.target as HTMLElement).closest('[data-affiliate-id]') as HTMLElement | null;
       if (!link) return;

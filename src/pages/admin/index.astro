@@ -1,0 +1,66 @@
+---
+import '../../styles/global.css';
+import { isAuthenticated } from '../../lib/auth';
+
+export const prerender = false;
+
+// Redirect to dashboard if already logged in
+if (isAuthenticated(Astro.request)) {
+  return Astro.redirect('/admin/dashboard');
+}
+
+const hasError = Astro.url.searchParams.has('error');
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin Login — Beach Money Team</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-ocean-900 text-sand-100 font-body antialiased min-h-screen flex items-center justify-center px-6">
+    <div class="w-full max-w-sm">
+      <div class="text-center mb-8">
+        <span class="text-4xl block mb-4">🏝️</span>
+        <h1 class="text-2xl font-bold text-sand-100">Admin Login</h1>
+        <p class="text-sm text-sand-500 mt-2">Beach Money Team Dashboard</p>
+      </div>
+
+      {hasError && (
+        <div class="bg-coral/10 border border-coral/30 text-coral rounded-xl px-4 py-3 text-sm mb-6 text-center">
+          Falsches Passwort. Versuche es erneut.
+        </div>
+      )}
+
+      <form action="/api/admin/login" method="POST" class="space-y-4">
+        <div>
+          <label for="password" class="block text-sm font-medium text-sand-400 mb-2">Passwort</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            required
+            autofocus
+            class="w-full bg-ocean-800 border border-ocean-600/50 rounded-xl px-4 py-3 text-sand-200 placeholder:text-sand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset-500 focus-visible:border-transparent transition-all"
+            placeholder="Admin Passwort"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-sunset-500 hover:bg-sunset-400 text-ocean-900 py-3 rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-[0.98]"
+        >
+          Einloggen
+        </button>
+      </form>
+
+      <a href="/" class="block text-center text-sm text-sand-600 hover:text-sand-400 mt-8 transition-colors">
+        &larr; Zurück zur Website
+      </a>
+    </div>
+  </body>
+</html>

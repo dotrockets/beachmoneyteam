@@ -1,0 +1,228 @@
+---
+import '../../styles/global.css';
+import { isAuthenticated } from '../../lib/auth';
+import { store } from '../../lib/store';
+
+export const prerender = false;
+
+if (!isAuthenticated(Astro.request)) {
+  return Astro.redirect('/admin');
+}
+
+const stats = store.getStats();
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Dashboard — Beach Money Team Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-ocean-900 text-sand-100 font-body antialiased min-h-screen">
+    <!-- Admin Nav -->
+    <nav class="border-b border-ocean-700/30 bg-ocean-900/95 backdrop-blur-xl sticky top-0 z-40">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <a href="/" class="flex items-center gap-2 text-sand-400 hover:text-sand-200 transition-colors">
+            <span class="text-xl">🏝️</span>
+          </a>
+          <span class="text-ocean-600">|</span>
+          <span class="text-sm font-bold text-sand-200">Admin Dashboard</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="/" target="_blank" class="text-xs text-sand-500 hover:text-sand-300 transition-colors">
+            Website ansehen &#8599;
+          </a>
+          <form action="/api/admin/logout" method="POST">
+            <button type="submit" class="text-xs text-sand-500 hover:text-coral transition-colors">
+              Logout
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold text-sand-100">Dashboard</h1>
+        <p class="text-sm text-sand-500 mt-1">
+          Daten seit letztem Server-Start. Echtzeit-Tracking deiner Affiliate-Clicks und Newsletter-Signups.
+        </p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-ocean-800/80 border border-ocean-600/30 rounded-2xl p-6">
+          <div class="text-xs font-bold uppercase tracking-wider text-sand-500 mb-2">Clicks Gesamt</div>
+          <div class="text-3xl font-bold text-sand-100 font-mono">{stats.totalClicks}</div>
+        </div>
+        <div class="bg-ocean-800/80 border border-ocean-600/30 rounded-2xl p-6">
+          <div class="text-xs font-bold uppercase tracking-wider text-sand-500 mb-2">Clicks Heute</div>
+          <div class="text-3xl font-bold text-sunset-400 font-mono">{stats.clicksToday}</div>
+        </div>
+        <div class="bg-ocean-800/80 border border-ocean-600/30 rounded-2xl p-6">
+          <div class="text-xs font-bold uppercase tracking-wider text-sand-500 mb-2">Signups Gesamt</div>
+          <div class="text-3xl font-bold text-sand-100 font-mono">{stats.totalSignups}</div>
+        </div>
+        <div class="bg-ocean-800/80 border border-ocean-600/30 rounded-2xl p-6">
+          <div class="text-xs font-bold uppercase tracking-wider text-sand-500 mb-2">Signups Heute</div>
+          <div class="text-3xl font-bold text-seafoam font-mono">{stats.signupsToday}</div>
+        </div>
+      </div>
+
+      <!-- Week Stats -->
+      <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="bg-ocean-800/50 border border-ocean-600/20 rounded-xl p-4 flex items-center gap-4">
+          <div class="size-10 rounded-lg bg-sunset-500/10 flex items-center justify-center text-sunset-400 text-lg">&#9758;</div>
+          <div>
+            <div class="text-lg font-bold text-sand-200 font-mono">{stats.clicksWeek}</div>
+            <div class="text-xs text-sand-500">Clicks letzte 7 Tage</div>
+          </div>
+        </div>
+        <div class="bg-ocean-800/50 border border-ocean-600/20 rounded-xl p-4 flex items-center gap-4">
+          <div class="size-10 rounded-lg bg-seafoam/10 flex items-center justify-center text-seafoam text-lg">&#9993;</div>
+          <div>
+            <div class="text-lg font-bold text-sand-200 font-mono">{stats.signupsWeek}</div>
+            <div class="text-xs text-sand-500">Signups letzte 7 Tage</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Top Products -->
+        <section class="bg-ocean-800/80 border border-ocean-600/30 rounded-2xl p-6">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-sand-400 mb-4">Top Produkte (Clicks)</h2>
+          {stats.topProducts.length > 0 ? (
+            <div class="space-y-3">
+              {stats.topProducts.map((item, i) => (
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <span class="text-xs font-mono text-sand-600 w-5">{i + 1}.</span>
+                    <span class="text-sm text-sand-300">{item.product}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="h-1.5 rounded-full bg-sunset-500/30 w-16">
+                      <div
+                        class="h-full rounded-full bg-sunset-500"
+                        style={`width: ${stats.topProducts[0] ? (item.count / stats.topProducts[0].count * 100) : 0}%`}
+                      ></div>
+                    </div>
+                    <span class="text-xs font-mono text-sand-500 w-8 text-right">{item.count}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p class="text-sm text-sand-600 italic">Noch keine Clicks erfasst.</p>
+          )}
+        </section>
+
+        <!-- Clicks by Page -->
+        <section class="bg-ocean-800/80 border border-ocean-600/30 rounded-2xl p-6">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-sand-400 mb-4">Clicks nach Seite</h2>
+          {stats.clicksByPage.length > 0 ? (
+            <div class="space-y-3">
+              {stats.clicksByPage.map((item) => (
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-sand-300 font-mono">{item.page}</span>
+                  <span class="text-xs font-mono text-sand-500">{item.count} clicks</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p class="text-sm text-sand-600 italic">Noch keine Daten.</p>
+          )}
+        </section>
+
+        <!-- Recent Clicks -->
+        <section class="bg-ocean-800/80 border border-ocean-600/30 rounded-2xl p-6">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-sand-400 mb-4">Letzte Clicks</h2>
+          {stats.recentClicks.length > 0 ? (
+            <div class="space-y-2 max-h-80 overflow-y-auto">
+              {stats.recentClicks.map((click) => {
+                const time = new Date(click.timestamp).toLocaleString('de-DE', {
+                  hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit'
+                });
+                return (
+                  <div class="flex items-center justify-between py-1.5 border-b border-ocean-700/30 last:border-0">
+                    <div>
+                      <span class="text-sm text-sand-300">{click.product || click.id}</span>
+                      <span class="text-xs text-sand-600 ml-2">{click.path}</span>
+                    </div>
+                    <span class="text-xs text-sand-600 font-mono shrink-0">{time}</span>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p class="text-sm text-sand-600 italic">Noch keine Clicks erfasst.</p>
+          )}
+        </section>
+
+        <!-- Recent Signups -->
+        <section class="bg-ocean-800/80 border border-ocean-600/30 rounded-2xl p-6">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-sand-400 mb-4">Letzte Newsletter-Signups</h2>
+          {stats.recentSignups.length > 0 ? (
+            <div class="space-y-2 max-h-80 overflow-y-auto">
+              {stats.recentSignups.map((signup) => {
+                const time = new Date(signup.timestamp).toLocaleString('de-DE', {
+                  hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit'
+                });
+                return (
+                  <div class="flex items-center justify-between py-1.5 border-b border-ocean-700/30 last:border-0">
+                    <span class="text-sm text-sand-300">{signup.email}</span>
+                    <span class="text-xs text-sand-600 font-mono shrink-0">{time}</span>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p class="text-sm text-sand-600 italic">Noch keine Signups.</p>
+          )}
+        </section>
+      </div>
+
+      <!-- Quick Links -->
+      <section class="mt-8 bg-ocean-800/50 border border-ocean-600/20 rounded-2xl p-6">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-sand-400 mb-4">Quick Links</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <a href="/" target="_blank" class="bg-ocean-700/30 hover:bg-ocean-700/50 border border-ocean-600/20 rounded-xl p-4 text-center transition-all group">
+            <span class="text-2xl block mb-2">🏠</span>
+            <span class="text-xs text-sand-400 group-hover:text-sand-200">Homepage</span>
+          </a>
+          <a href="/gear" target="_blank" class="bg-ocean-700/30 hover:bg-ocean-700/50 border border-ocean-600/20 rounded-xl p-4 text-center transition-all group">
+            <span class="text-2xl block mb-2">🎒</span>
+            <span class="text-xs text-sand-400 group-hover:text-sand-200">Gear Guide</span>
+          </a>
+          <a href="/blog" target="_blank" class="bg-ocean-700/30 hover:bg-ocean-700/50 border border-ocean-600/20 rounded-xl p-4 text-center transition-all group">
+            <span class="text-2xl block mb-2">📝</span>
+            <span class="text-xs text-sand-400 group-hover:text-sand-200">Blog</span>
+          </a>
+          <a href="/api/admin/stats" target="_blank" class="bg-ocean-700/30 hover:bg-ocean-700/50 border border-ocean-600/20 rounded-xl p-4 text-center transition-all group">
+            <span class="text-2xl block mb-2">📊</span>
+            <span class="text-xs text-sand-400 group-hover:text-sand-200">Stats JSON</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Auto-refresh -->
+      <div class="mt-6 flex items-center justify-between text-xs text-sand-600">
+        <span>Seite aktualisiert sich alle 30 Sekunden automatisch.</span>
+        <button onclick="location.reload()" class="text-sunset-400 hover:text-sunset-300 transition-colors">
+          Jetzt aktualisieren
+        </button>
+      </div>
+    </main>
+
+    <script is:inline>
+      // Auto-refresh every 30 seconds
+      setTimeout(() => location.reload(), 30000);
+    </script>
+  </body>
+</html>

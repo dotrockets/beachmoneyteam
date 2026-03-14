@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Seite nicht gefunden" description="Diese Seite existiert nicht.">
+  <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-ocean-900/70 border-b border-ocean-700/30">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <span class="text-2xl">🏝️</span>
+        <span class="font-display text-xl font-bold tracking-tight text-sand-100 group-hover:text-sunset-400 transition-colors">Beach Money</span>
+      </a>
+      <a href="/" class="text-sm text-sand-400 hover:text-sunset-400 transition-colors">&larr; Zurück</a>
+    </div>
+  </nav>
+
+  <main class="min-h-screen flex items-center justify-center px-6">
+    <div class="text-center">
+      <span class="text-8xl block mb-6">🏖️</span>
+      <h1 class="font-display text-5xl md:text-6xl font-black text-sand-100 mb-4">404</h1>
+      <p class="text-xl text-sand-400 mb-8">Diese Seite ist wohl mit der Flut davongeschwommen.</p>
+      <a href="/" class="inline-flex items-center gap-2 bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-105 active:scale-95">
+        Zurück zum Strand
+      </a>
+    </div>
+  </main>
+</Layout>

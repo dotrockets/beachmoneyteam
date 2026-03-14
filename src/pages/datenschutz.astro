@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Datenschutzerklärung — Beach Money Team" description="Datenschutzerklärung gemäß DSGVO für Beach Money Team.">
@@ -152,21 +153,5 @@ import Layout from '../layouts/Layout.astro';
     </article>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-ocean-700/30 py-12">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <span class="text-xl">🏝️</span>
-          <span class="font-display font-bold text-sand-300">Beach Money Team</span>
-        </div>
-        <div class="flex items-center gap-6 text-sm text-sand-500">
-          <a href="/impressum" class="hover:text-sunset-400 transition-colors">Impressum</a>
-          <a href="/datenschutz" class="text-sunset-400">Datenschutz</a>
-          <a href="/affiliate-disclaimer" class="hover:text-sunset-400 transition-colors">Affiliate Hinweis</a>
-        </div>
-        <p class="text-xs text-sand-600">&copy; 2026 Beach Money Team. Made with 🦀 on Koh Phangan.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer activeFooterLink="datenschutz" />
 </Layout>

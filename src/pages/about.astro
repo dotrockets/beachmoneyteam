@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About — Beach Money Team" description="Die Story hinter Beach Money Team. Von 9-to-5 in Deutschland zu 100% Remote auf Koh Phangan.">
+  <Nav active="about" />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 via-ocean-800 to-ocean-900"></div>
+    <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-sunset-500/[0.06] rounded-full blur-[128px]"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-[1fr_auto] gap-12 items-center">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-sunset-400 mb-4">Über mich</span>
+          <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-sand-100 mb-6 text-pretty">
+            Von Hamburg<br>nach Koh Phangan.
+          </h1>
+          <p class="text-lg text-sand-400 leading-relaxed text-pretty">
+            Ich bin kein Guru, kein Coach und kein Millionär. Ich bin jemand der es einfach gemacht hat — und jetzt teile ich was ich gelernt habe.
+          </p>
+        </div>
+        <div class="shrink-0 w-48 md:w-56 aspect-square rounded-2xl overflow-hidden bg-ocean-700/30 border border-ocean-600/30">
+          <img src="/images/hero-character.png" alt="Beach Money Team" width="224" height="224" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="relative py-24">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 to-ocean-800"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6">
+      <h2 class="font-display text-3xl font-black text-sand-100 mb-16 text-center">Die Timeline</h2>
+
+      <div class="space-y-12">
+        <!-- Timeline Item -->
+        <div class="relative pl-8 border-l-2 border-ocean-600/50">
+          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-coral border-4 border-ocean-900"></div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-coral/80 mb-2 block">2022</span>
+          <h3 class="font-display text-xl font-bold text-sand-200 mb-2">Der Turning Point</h3>
+          <p class="text-sand-400 leading-relaxed">
+            9-to-5 in Deutschland. Guter Job, gutes Gehalt — aber jeden Morgen das gleiche Gefühl: Das kann nicht alles sein. Ersten Remote-Freelance-Gig angenommen. Nebenbei, abends.
+          </p>
+        </div>
+
+        <div class="relative pl-8 border-l-2 border-ocean-600/50">
+          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-sunset-500 border-4 border-ocean-900"></div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-sunset-400/80 mb-2 block">2023</span>
+          <h3 class="font-display text-xl font-bold text-sand-200 mb-2">Der Sprung</h3>
+          <p class="text-sand-400 leading-relaxed">
+            Kündigung eingereicht. Wohnung aufgelöst. One-Way-Ticket nach Thailand. Erster Monat in Chiang Mai — Coworking, Community, das volle Programm. Remote Income deckt die Kosten.
+          </p>
+        </div>
+
+        <div class="relative pl-8 border-l-2 border-ocean-600/50">
+          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-palm-400 border-4 border-ocean-900"></div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-palm-400/80 mb-2 block">2024</span>
+          <h3 class="font-display text-xl font-bold text-sand-200 mb-2">Koh Phangan</h3>
+          <p class="text-sand-400 leading-relaxed">
+            Nach 12+ Ländern endlich die Base gefunden. Koh Phangan hat alles: Beach, Coworkings, Community, bezahlbare Mieten. Revenue-Streams diversifiziert. Beach Money Team gestartet.
+          </p>
+        </div>
+
+        <div class="relative pl-8 border-l-2 border-ocean-600/50">
+          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-seafoam border-4 border-ocean-900"></div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-seafoam/80 mb-2 block">2026 — Jetzt</span>
+          <h3 class="font-display text-xl font-bold text-sand-200 mb-2">Beach Money Team</h3>
+          <p class="text-sand-400 leading-relaxed">
+            2+ Jahre Remote, 12+ Länder, 100% ortsunabhängig. Beach Money Team teilt alles was ich gelernt habe — die Tools, die Strategien, die ehrlichen Erfahrungen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-800 via-ocean-900 to-ocean-900"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+      <h2 class="font-display text-3xl font-black text-sand-100 mb-12 text-center">Wofür ich stehe</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-ocean-800/50 border border-ocean-600/30 rounded-2xl p-8 text-center">
+          <span class="text-4xl block mb-4">🎯</span>
+          <h3 class="font-display text-lg font-bold text-sand-200 mb-3">Ehrlichkeit</h3>
+          <p class="text-sm text-sand-400 leading-relaxed">Kein Fake-Lifestyle, keine übertriebenen Versprechen. Was du hier liest, ist echt.</p>
+        </div>
+        <div class="bg-ocean-800/50 border border-ocean-600/30 rounded-2xl p-8 text-center">
+          <span class="text-4xl block mb-4">🔧</span>
+          <h3 class="font-display text-lg font-bold text-sand-200 mb-3">Praxis</h3>
+          <p class="text-sm text-sand-400 leading-relaxed">Ich empfehle nur was ich selbst nutze. Jedes Tool, jeder Tipp ist aus eigener Erfahrung.</p>
+        </div>
+        <div class="bg-ocean-800/50 border border-ocean-600/30 rounded-2xl p-8 text-center">
+          <span class="text-4xl block mb-4">🤝</span>
+          <h3 class="font-display text-lg font-bold text-sand-200 mb-3">Transparenz</h3>
+          <p class="text-sm text-sand-400 leading-relaxed">Affiliate-Links sind immer gekennzeichnet. Du weißt immer, wo ich mitverdiene.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-ocean-900"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(230,115,0,0.06),transparent_70%)]"></div>
+    <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-black text-sand-100 mb-6">Lass uns connecten</h2>
+      <p class="text-sand-400 text-lg mb-8 leading-relaxed">
+        Fragen, Feedback oder einfach Hallo sagen? Schreib mir oder melde dich für den Newsletter an.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="mailto:hello@beachmoneyteam.com" class="inline-flex items-center gap-2 bg-ocean-700/50 hover:bg-ocean-600/50 text-sand-200 px-6 py-3 rounded-full font-medium transition-all hover:scale-105">
+          E-Mail schreiben
+        </a>
+        <a href="/#start" class="inline-flex items-center gap-2 bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-6 py-3 rounded-full font-bold transition-all hover:scale-105 active:scale-95">
+          Newsletter abonnieren
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
