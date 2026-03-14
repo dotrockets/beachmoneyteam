@@ -539,99 +539,57 @@ const affiliates = [
     </div>
   </section>
 
-  <!-- Live from Koh Phangan — Weather + World Clock -->
-  <section class="relative py-16 overflow-hidden">
+  <!-- Live from Koh Phangan — Compact Weather + World Clock Bar -->
+  <section class="relative py-8 overflow-hidden">
     <div class="absolute inset-0 bg-ocean-900"></div>
-    <div class="relative z-10 max-w-5xl mx-auto px-6">
-      <div class="text-center mb-10">
-        <div class="inline-flex items-center gap-2 bg-ocean-800/60 border border-ocean-600/30 rounded-full px-5 py-2 mb-4 text-sm text-sand-300">
-          <span class="inline-block w-2 h-2 rounded-full bg-seafoam animate-pulse"></span>
-          Live from Koh Phangan
-        </div>
-      </div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      <!-- Single compact row -->
+      <div class="bg-ocean-800/60 border border-ocean-600/30 rounded-2xl px-6 py-4">
+        <div class="flex flex-col lg:flex-row items-center gap-4 lg:gap-0 lg:justify-between">
 
-      <div class="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-center">
-        <!-- Weather -->
-        <div class="bg-ocean-800/60 border border-ocean-600/30 rounded-2xl p-6 md:p-8">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-3xl" id="weather-icon">&#9728;&#65039;</span>
-            <div>
-              <h3 class="font-display text-lg font-bold text-sand-100">Koh Phangan</h3>
-              <p class="text-xs text-sand-400">Thailand, Gulf of Siam</p>
+          <!-- Live indicator + Weather -->
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="inline-block w-2 h-2 rounded-full bg-seafoam animate-pulse"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-sand-400">Live</span>
+            </div>
+            <div class="w-px h-6 bg-ocean-600/40 hidden lg:block"></div>
+            <div class="flex items-center gap-2">
+              <span id="weather-icon" class="text-xl">&#9728;&#65039;</span>
+              <span id="weather-temp" class="font-display text-2xl font-black text-sand-100">--°</span>
+              <span id="weather-desc" class="text-sm text-sand-300 hidden sm:inline">--</span>
+            </div>
+            <div class="flex items-center gap-3 text-xs text-sand-400">
+              <span>&#128167; <span id="weather-humidity" class="text-sand-300 font-semibold">--</span>%</span>
+              <span>&#127744; <span id="weather-wind" class="text-sand-300 font-semibold">--</span> km/h</span>
+              <span class="hidden sm:inline">UV <span id="weather-uv" class="text-sand-300 font-semibold">--</span></span>
             </div>
           </div>
-          <div class="flex items-end gap-3 mb-4">
-            <span id="weather-temp" class="font-display text-5xl font-black text-sand-100">--°</span>
-            <span id="weather-desc" class="text-sand-300 text-sm mb-2">Wird geladen...</span>
-          </div>
-          <div class="grid grid-cols-3 gap-3">
-            <div class="bg-ocean-700/30 rounded-xl p-3 text-center">
-              <p class="text-xs text-sand-400 mb-1">Luftfeuchtigkeit</p>
-              <p id="weather-humidity" class="text-sm font-semibold text-sand-200">--%</p>
-            </div>
-            <div class="bg-ocean-700/30 rounded-xl p-3 text-center">
-              <p class="text-xs text-sand-400 mb-1">Wind</p>
-              <p id="weather-wind" class="text-sm font-semibold text-sand-200">-- km/h</p>
-            </div>
-            <div class="bg-ocean-700/30 rounded-xl p-3 text-center">
-              <p class="text-xs text-sand-400 mb-1">UV-Index</p>
-              <p id="weather-uv" class="text-sm font-semibold text-sand-200">--</p>
-            </div>
-          </div>
-        </div>
 
-        <!-- Divider -->
-        <div class="hidden md:block w-px h-40 bg-gradient-to-b from-transparent via-ocean-600/40 to-transparent"></div>
+          <!-- Divider -->
+          <div class="w-full lg:w-px h-px lg:h-8 bg-ocean-600/30"></div>
 
-        <!-- World Clocks -->
-        <div class="bg-ocean-800/60 border border-ocean-600/30 rounded-2xl p-6 md:p-8">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="text-2xl">&#127760;</span>
-            <h3 class="font-display text-lg font-bold text-sand-100">Weltzeituhren</h3>
-          </div>
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <span class="text-lg">🇹🇭</span>
-                <div>
-                  <p class="text-sm font-semibold text-sand-200">Koh Phangan</p>
-                  <p class="text-xs text-sand-400">ICT (UTC+7)</p>
-                </div>
-              </div>
-              <span id="clock-kp" class="font-mono text-xl font-bold text-sunset-400">--:--</span>
+          <!-- World Clocks — inline -->
+          <div class="flex items-center gap-5 md:gap-6 flex-wrap justify-center">
+            <div class="flex items-center gap-2">
+              <span class="text-sm">🇹🇭</span>
+              <span class="text-xs text-sand-400">KP</span>
+              <span id="clock-kp" class="font-mono text-sm font-bold text-sunset-400">--:--</span>
             </div>
-            <div class="border-t border-ocean-700/30"></div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <span class="text-lg">🇩🇪</span>
-                <div>
-                  <p class="text-sm font-semibold text-sand-200">Berlin</p>
-                  <p class="text-xs text-sand-400">CET (UTC+1)</p>
-                </div>
-              </div>
-              <span id="clock-de" class="font-mono text-xl font-bold text-sand-200">--:--</span>
+            <div class="flex items-center gap-2">
+              <span class="text-sm">🇩🇪</span>
+              <span class="text-xs text-sand-400">BER</span>
+              <span id="clock-de" class="font-mono text-sm font-bold text-sand-200">--:--</span>
             </div>
-            <div class="border-t border-ocean-700/30"></div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <span class="text-lg">🇺🇸</span>
-                <div>
-                  <p class="text-sm font-semibold text-sand-200">New York</p>
-                  <p class="text-xs text-sand-400">EST (UTC-5)</p>
-                </div>
-              </div>
-              <span id="clock-ny" class="font-mono text-xl font-bold text-sand-200">--:--</span>
+            <div class="flex items-center gap-2">
+              <span class="text-sm">🇺🇸</span>
+              <span class="text-xs text-sand-400">NYC</span>
+              <span id="clock-ny" class="font-mono text-sm font-bold text-sand-200">--:--</span>
             </div>
-            <div class="border-t border-ocean-700/30"></div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <span class="text-lg">🇦🇺</span>
-                <div>
-                  <p class="text-sm font-semibold text-sand-200">Sydney</p>
-                  <p class="text-xs text-sand-400">AEDT (UTC+11)</p>
-                </div>
-              </div>
-              <span id="clock-syd" class="font-mono text-xl font-bold text-sand-200">--:--</span>
+            <div class="flex items-center gap-2">
+              <span class="text-sm">🇦🇺</span>
+              <span class="text-xs text-sand-400">SYD</span>
+              <span id="clock-syd" class="font-mono text-sm font-bold text-sand-200">--:--</span>
             </div>
           </div>
         </div>
