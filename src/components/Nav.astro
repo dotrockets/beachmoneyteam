@@ -1,13 +1,14 @@
 ---
 interface Props {
-  active?: 'home' | 'gear' | 'blog' | 'about';
+  active?: 'home' | 'gear' | 'tools' | 'blog' | 'about';
 }
 
 const { active } = Astro.props;
 
 const links = [
   { href: '/', label: 'Home', id: 'home' as const },
-  { href: '/gear', label: 'Gear Guide', id: 'gear' as const },
+  { href: '/gear', label: 'Gear', id: 'gear' as const },
+  { href: '/tools', label: 'Tools', id: 'tools' as const },
   { href: '/blog', label: 'Blog', id: 'blog' as const },
   { href: '/about', label: 'About', id: 'about' as const },
 ];

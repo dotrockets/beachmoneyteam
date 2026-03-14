@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css'
-import CookieConsent from '../components/CookieConsent.astro'
 
 interface Props {
   title?: string;
@@ -40,6 +39,13 @@ const jsonLd = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Beach Money Team Blog" href="/rss.xml" />
+
+    <!-- Preload self-hosted fonts -->
+    <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -54,9 +60,6 @@ const jsonLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
     <title>{title}</title>
 
     <!-- Structured Data -->
@@ -67,6 +70,5 @@ const jsonLd = {
   </head>
   <body class="bg-ocean-900 text-sand-100 font-body antialiased overflow-x-hidden">
     <slot />
-    <CookieConsent />
   </body>
 </html>

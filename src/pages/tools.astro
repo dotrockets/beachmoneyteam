@@ -1,0 +1,341 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const categories = [
+  {
+    name: "Remote Work",
+    emoji: "💼",
+    description: "Die Tools die ich täglich zum Arbeiten nutze.",
+    tools: [
+      {
+        id: "notion",
+        title: "Notion",
+        subtitle: "All-in-One Workspace",
+        description: "Notizen, Projekte, Wikis, Datenbanken — alles an einem Ort. Mein zweites Gehirn. Free Plan reicht für den Anfang.",
+        features: ["Unlimited Pages (Free)", "Project Management", "Docs & Wikis", "API & Integrations"],
+        price: "Free / ab $10/mo",
+        link: "https://www.notion.so/",
+        badge: "Daily Driver",
+        pick: true,
+      },
+      {
+        id: "linear",
+        title: "Linear",
+        subtitle: "Issue Tracking für Profis",
+        description: "Das beste Issue-Tracking-Tool das es gibt. Keyboard-first, unfassbar schnell, beautiful UI. Für Solo-Devs und Teams.",
+        features: ["Keyboard-first", "Git Integration", "Cycles & Roadmaps", "Blitzschnell"],
+        price: "Free / ab $8/mo",
+        link: "https://linear.app/",
+        badge: "Empfehlung",
+        pick: false,
+      },
+      {
+        id: "slack",
+        title: "Slack",
+        subtitle: "Team-Kommunikation",
+        description: "Standard für Remote-Teams. Channels, Threads, Integrations. Unverzichtbar wenn du mit Clients oder Teams arbeitest.",
+        features: ["Channels & Threads", "1000+ Integrations", "Huddles & Calls", "Search Everything"],
+        price: "Free / ab $7.25/mo",
+        link: "https://slack.com/",
+        badge: "Standard",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "Finanzen & Banking",
+    emoji: "💳",
+    description: "Geld verdienen, senden und empfangen von überall.",
+    tools: [
+      {
+        id: "wise",
+        title: "Wise (TransferWise)",
+        subtitle: "Multi-Währungs-Konto",
+        description: "DAS Konto für Digital Nomads. Echte Bankverbindungen in 10+ Währungen, günstigste Wechselkurse, Debitkarte die überall funktioniert.",
+        features: ["10+ Währungskonten", "Echte IBAN/Routing", "Günstigste Wechselkurse", "Debitkarte weltweit"],
+        price: "Kostenlos",
+        link: "https://wise.com/",
+        badge: "Must Have",
+        pick: true,
+      },
+      {
+        id: "n26",
+        title: "N26",
+        subtitle: "Mobiles Banking",
+        description: "Deutsches Online-Banking das remote funktioniert. Keine Kontoführungsgebühren, gute App, Apple/Google Pay.",
+        features: ["Keine Kontogebühren", "Apple/Google Pay", "Push-Benachrichtigungen", "Spaces (Unterkonten)"],
+        price: "Free / ab 4,90€/mo",
+        link: "https://n26.com/",
+        badge: "Für EU",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "VPN & Sicherheit",
+    emoji: "🔒",
+    description: "Sicher arbeiten in öffentlichen Netzwerken.",
+    tools: [
+      {
+        id: "nordvpn",
+        title: "NordVPN",
+        subtitle: "Schnellstes VPN für Nomads",
+        description: "5.000+ Server weltweit, Kill Switch, Double VPN. Ich nutze es in jedem Café und Coworking. Essentiell für öffentliche WiFi-Netze.",
+        features: ["5.000+ Server", "Kill Switch", "6 Geräte gleichzeitig", "Threat Protection"],
+        price: "ab 3,49€/mo (2J)",
+        link: "https://nordvpn.com/",
+        badge: "Essentiell",
+        pick: true,
+      },
+      {
+        id: "protonvpn",
+        title: "Proton VPN",
+        subtitle: "Privacy-First VPN",
+        description: "Von den ProtonMail-Machern. Open-Source, Swiss-based, keine Logs. Free Tier verfügbar.",
+        features: ["Open Source", "Swiss Privacy", "No-Logs Policy", "Free Tier"],
+        price: "Free / ab 4,99€/mo",
+        link: "https://protonvpn.com/",
+        badge: "Privacy",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "Krankenversicherung",
+    emoji: "🏥",
+    description: "Weltweite Absicherung für Langzeitreisende.",
+    tools: [
+      {
+        id: "safetywing",
+        title: "SafetyWing",
+        subtitle: "Nomad Insurance",
+        description: "Gebaut von Nomads, für Nomads. Monatlich kündbar, weltweit gültig, bezahlbar. Die Standard-Versicherung der Community.",
+        features: ["Monatlich kündbar", "Weltweit gültig", "inkl. Home Country", "COVID-Abdeckung"],
+        price: "ab ~$45/mo",
+        link: "https://safetywing.com/",
+        badge: "Community Standard",
+        pick: true,
+      },
+      {
+        id: "worldnomads",
+        title: "World Nomads",
+        subtitle: "Reiseversicherung",
+        description: "Für kürzere Trips und Abenteuerreisende. Deckt auch Extremsportarten ab. Eher für 1–6 Monate als für Langzeitreisen.",
+        features: ["Extremsport inkl.", "Flexibel verlängerbar", "24/7 Support", "150+ Länder"],
+        price: "variabel",
+        link: "https://worldnomads.com/",
+        badge: "Adventure",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "Cloud & Hosting",
+    emoji: "☁️",
+    description: "Für Projekte, Websites und SaaS.",
+    tools: [
+      {
+        id: "vercel",
+        title: "Vercel",
+        subtitle: "Frontend Cloud",
+        description: "Diese Website läuft auf Vercel. Deploy per Git Push, Edge Network weltweit, Serverless Functions. Free Tier ist großzügig.",
+        features: ["Deploy per Git Push", "Edge Network", "Serverless Functions", "Free SSL"],
+        price: "Free / ab $20/mo",
+        link: "https://vercel.com/",
+        badge: "Nutze ich",
+        pick: true,
+      },
+      {
+        id: "supabase",
+        title: "Supabase",
+        subtitle: "Open-Source Firebase Alternative",
+        description: "PostgreSQL-Datenbank, Auth, Storage, Realtime — alles in einem. Perfekt für MVPs und Side Projects.",
+        features: ["PostgreSQL", "Auth & Storage", "Realtime Subscriptions", "Großzügiger Free Tier"],
+        price: "Free / ab $25/mo",
+        link: "https://supabase.com/",
+        badge: "Für Devs",
+        pick: false,
+      },
+    ],
+  },
+  {
+    name: "Produktivität",
+    emoji: "⚡",
+    description: "Tools die mich schneller und fokussierter machen.",
+    tools: [
+      {
+        id: "raycast",
+        title: "Raycast",
+        subtitle: "Spotlight on Steroids",
+        description: "Ersetzt Spotlight komplett. Snippets, Window Management, Clipboard History, AI — alles über eine Tastenkombination.",
+        features: ["Launcher + Extensions", "Snippets & Clipboard", "Window Management", "AI Built-in"],
+        price: "Free / ab $8/mo",
+        link: "https://raycast.com/",
+        badge: "Game Changer",
+        pick: true,
+      },
+      {
+        id: "arc",
+        title: "Arc Browser",
+        subtitle: "Der Browser der Zukunft",
+        description: "Spaces für verschiedene Projekte, Sidebar statt Tabs, Boosts zum Customizen von Websites. Einmal getestet, nie mehr zurück.",
+        features: ["Spaces & Profiles", "Sidebar Navigation", "Built-in Tools", "Beautiful UI"],
+        price: "Kostenlos",
+        link: "https://arc.net/",
+        badge: "Kostenlos",
+        pick: false,
+      },
+    ],
+  },
+];
+---
+
+<Layout title="Digital Nomad Tools — Beach Money Team" description="Die besten Software-Tools für Digital Nomads. Remote Work, Banking, VPN, Versicherung — alles was du brauchst.">
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 via-ocean-800 to-ocean-900"></div>
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-sunset-500/[0.06] rounded-full blur-[128px]"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-sunset-400 mb-4">Software & Services</span>
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-sand-100 mb-6 text-pretty">
+        Digital Nomad<br>Tool Stack
+      </h1>
+      <p class="max-w-2xl mx-auto text-lg text-sand-400 leading-relaxed text-pretty">
+        Die Software und Services die mein Nomad-Leben möglich machen. Jedes Tool selbst genutzt, ehrlich bewertet.
+      </p>
+    </div>
+  </section>
+
+  <!-- Category Navigation -->
+  <div class="sticky top-[65px] z-30 backdrop-blur-xl bg-ocean-900/80 border-b border-ocean-700/30">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex gap-3 overflow-x-auto scrollbar-hide">
+      {categories.map((cat) => (
+        <a
+          href={`#${cat.name.toLowerCase().replace(/\s+/g, '-').replace(/[&öüä]/g, '')}`}
+          class="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-sand-400 hover:text-sand-200 bg-ocean-800/50 hover:bg-ocean-700/50 border border-ocean-600/20 transition-all"
+        >
+          <span>{cat.emoji}</span>
+          <span>{cat.name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Tool Sections -->
+  <main class="relative pb-24">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 to-ocean-800"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      {categories.map((category) => (
+        <section
+          id={category.name.toLowerCase().replace(/\s+/g, '-').replace(/[&öüä]/g, '')}
+          class="pt-20 scroll-mt-32"
+        >
+          <div class="flex items-center gap-4 mb-3">
+            <span class="text-3xl">{category.emoji}</span>
+            <h2 class="font-display text-3xl font-black text-sand-100">{category.name}</h2>
+          </div>
+          <p class="text-sand-500 mb-8">{category.description}</p>
+
+          <div class="space-y-4">
+            {category.tools.map((tool) => (
+              <article class="group relative">
+                {tool.pick && (
+                  <div class="absolute -inset-px rounded-2xl bg-gradient-to-r from-sunset-500/20 to-sunset-600/5 blur-sm"></div>
+                )}
+                <div class={`relative bg-ocean-800/80 backdrop-blur-sm border rounded-2xl p-6 md:p-8 transition-all duration-300 group-hover:border-ocean-500/50 ${tool.pick ? 'border-sunset-500/30' : 'border-ocean-600/30'}`}>
+                  <div class="flex flex-col md:flex-row md:items-start gap-6">
+                    <!-- Icon -->
+                    <div class="shrink-0 w-14 h-14 rounded-xl bg-ocean-700/50 flex items-center justify-center text-2xl">
+                      {category.emoji}
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-1 min-w-0">
+                      <div class="flex flex-wrap items-center gap-3 mb-2">
+                        <span class={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${tool.pick ? 'bg-sunset-500/20 text-sunset-400' : 'bg-ocean-600/30 text-sand-400'}`}>
+                          {tool.badge}
+                        </span>
+                        {tool.pick && (
+                          <span class="text-[10px] font-bold uppercase tracking-wider text-seafoam">Meine Empfehlung</span>
+                        )}
+                      </div>
+                      <h3 class="font-display text-xl md:text-2xl font-bold text-sand-100 mb-1">{tool.title}</h3>
+                      <p class="text-sm text-sand-500 mb-3">{tool.subtitle}</p>
+                      <p class="text-sand-400 text-sm leading-relaxed mb-4">{tool.description}</p>
+
+                      <ul class="flex flex-wrap gap-2">
+                        {tool.features.map((feature) => (
+                          <li class="flex items-center gap-1.5 text-xs text-sand-500 bg-ocean-700/30 px-2.5 py-1 rounded-full">
+                            <span class="text-seafoam text-[8px]">&#9679;</span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="shrink-0 flex flex-row md:flex-col items-center md:items-end gap-4 md:gap-3 md:text-right">
+                      <div class="text-lg font-bold text-sand-200 font-display whitespace-nowrap">{tool.price}</div>
+                      <a
+                        href={tool.link}
+                        data-affiliate-id={tool.id}
+                        data-product-name={tool.title}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 whitespace-nowrap ${tool.pick ? 'bg-sunset-500 hover:bg-sunset-400 text-ocean-900' : 'bg-ocean-600/50 hover:bg-ocean-500/50 text-sand-200'}`}
+                      >
+                        Ansehen &#8599;
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+
+  <!-- Disclaimer -->
+  <section class="border-t border-ocean-700/30 py-16 bg-ocean-900">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <p class="text-sm text-sand-500 leading-relaxed">
+        * Einige Links auf dieser Seite sind Affiliate-Links. Wenn du dich über diese Links anmeldest, erhalte ich ggf. eine Provision — für dich ändert sich am Preis nichts. Ich empfehle nur Tools die ich selbst nutze.
+        <a href="/affiliate-disclaimer" class="text-sunset-400 hover:text-sunset-300 underline underline-offset-2 ml-1">Mehr erfahren</a>
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+
+  <!-- Affiliate Click Tracking -->
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest('[data-affiliate-id]') as HTMLElement | null;
+      if (!link) return;
+
+      const data = {
+        id: link.dataset.affiliateId,
+        product: link.dataset.productName,
+        timestamp: new Date().toISOString(),
+        referrer: document.referrer,
+        path: window.location.pathname
+      };
+
+      const clicks = JSON.parse(localStorage.getItem('bmt_clicks') || '[]');
+      clicks.push(data);
+      localStorage.setItem('bmt_clicks', JSON.stringify(clicks));
+
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('/api/track', JSON.stringify(data));
+      }
+    });
+  </script>
+</Layout>

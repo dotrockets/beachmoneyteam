@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  price: string;
+  link: string;
+  image?: string;
+  badge?: string;
+  id: string;
+}
+
+const { title, subtitle, price, link, image, badge, id } = Astro.props;
+---
+
+<div class="my-8 group relative">
+  <div class="relative bg-ocean-800/80 backdrop-blur-sm border border-sunset-500/20 rounded-2xl p-6 transition-all duration-300 group-hover:border-sunset-500/40">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+      {image && (
+        <div class="shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-ocean-700/30">
+          <img src={image} alt={title} width="80" height="80" loading="lazy" class="w-full h-full object-cover" />
+        </div>
+      )}
+      <div class="flex-1 min-w-0">
+        {badge && (
+          <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-sunset-500/20 text-sunset-400 mb-1 inline-block">
+            {badge}
+          </span>
+        )}
+        <h4 class="font-display text-lg font-bold text-sand-100">{title}</h4>
+        <p class="text-sm text-sand-500">{subtitle}</p>
+      </div>
+      <div class="shrink-0 flex items-center gap-4">
+        <span class="text-xl font-bold text-sand-200 font-display">{price}</span>
+        <a
+          href={link}
+          data-affiliate-id={id}
+          data-product-name={title}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-sunset-500 hover:bg-sunset-400 text-ocean-900 px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95"
+        >
+          Bei Amazon &#8599;
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
