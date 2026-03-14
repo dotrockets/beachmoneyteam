@@ -539,127 +539,119 @@ const affiliates = [
     </div>
   </section>
 
-  <!-- Live from Koh Phangan — Airport Departure Board Style -->
-  <section class="relative py-10 overflow-hidden">
-    <div class="absolute inset-0 bg-[#0c0c0c]"></div>
-    <div class="relative z-10 max-w-5xl mx-auto px-6">
-
-      <!-- Board header -->
-      <div class="flex items-center justify-between mb-3 px-2">
-        <div class="flex items-center gap-3">
+  <!-- World Weather Cards — Comic City Style -->
+  <section class="relative py-16 overflow-hidden">
+    <div class="absolute inset-0 bg-ocean-900"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-ocean-800/60 border border-ocean-600/30 rounded-full px-5 py-2 text-sm text-sand-300">
           <span class="inline-block w-2 h-2 rounded-full bg-seafoam animate-pulse"></span>
-          <span class="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#88ff88]">Live — Koh Phangan, Thailand</span>
+          Live Wetter &amp; Uhren
         </div>
-        <span class="font-mono text-xs text-[#888]" id="board-date">--</span>
       </div>
 
-      <!-- Board frame -->
-      <div class="bg-[#111] border border-[#333] rounded-lg overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.03)]">
-
-        <!-- Column headers -->
-        <div class="grid grid-cols-[1fr_1fr_1fr_1fr] md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr_1fr] bg-[#1a1a1a] border-b border-[#333] px-4 py-2">
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#666]">City</span>
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#666]">Local Time</span>
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#666] hidden md:block">Temp</span>
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#666] hidden md:block">Weather</span>
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#666]">Wind</span>
-          <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-[#666]">Status</span>
-        </div>
-
-        <!-- Koh Phangan row — highlighted -->
-        <div class="grid grid-cols-[1fr_1fr_1fr_1fr] md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr_1fr] bg-[#0a1a0a] border-b border-[#222] px-4 py-3 items-center">
-          <div class="flex items-center gap-2">
-            <span class="text-sm">🇹🇭</span>
-            <span class="font-mono text-sm font-bold text-[#ffcc00]">KOH PHANGAN</span>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <!-- Koh Phangan — highlighted -->
+        <div class="relative rounded-2xl overflow-hidden border-2 border-sunset-500/40 group">
+          <img src="/images/cities/kp.webp" alt="Koh Phangan" width="300" height="300" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+          <div class="relative z-10 p-4 flex flex-col justify-end min-h-[220px] sm:min-h-[260px]">
+            <div class="flex items-center gap-1.5 mb-1">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-seafoam animate-pulse"></span>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-seafoam">HQ</span>
+            </div>
+            <h3 class="font-display text-lg font-black text-white leading-tight">Koh Phangan</h3>
+            <p class="text-[10px] text-white/50 uppercase tracking-wider mb-3">Thailand</p>
+            <span id="clock-kp" class="font-mono text-2xl font-bold text-white tabular-nums mb-2">--:--:--</span>
+            <div class="flex items-center gap-1.5 mb-1">
+              <span id="weather-icon" class="text-sm">&#9728;&#65039;</span>
+              <span id="weather-temp" class="font-mono text-lg font-bold text-sunset-400">--°</span>
+            </div>
+            <div class="flex items-center gap-2 text-[10px] text-white/60">
+              <span id="weather-desc" class="uppercase">--</span>
+              <span>&#183;</span>
+              <span id="weather-wind">--</span>
+            </div>
           </div>
-          <span id="clock-kp" class="font-mono text-lg font-bold text-[#88ff88] tabular-nums">--:--:--</span>
-          <span id="weather-temp" class="font-mono text-sm font-bold text-[#ffcc00] hidden md:block">--°C</span>
-          <div class="hidden md:flex items-center gap-1.5">
-            <span id="weather-icon" class="text-sm">&#9728;&#65039;</span>
-            <span id="weather-desc" class="font-mono text-xs text-[#ccc]">--</span>
-          </div>
-          <span id="weather-wind" class="font-mono text-xs text-[#ccc]">--</span>
-          <span class="font-mono text-xs font-bold text-[#88ff88] flex items-center gap-1.5">
-            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#88ff88]"></span>
-            ONLINE
-          </span>
         </div>
 
         <!-- Berlin -->
-        <div class="grid grid-cols-[1fr_1fr_1fr_1fr] md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr_1fr] border-b border-[#1a1a1a] px-4 py-2.5 items-center hover:bg-[#151515] transition-colors">
-          <div class="flex items-center gap-2">
-            <span class="text-sm">🇩🇪</span>
-            <span class="font-mono text-sm text-[#ccc]">BERLIN</span>
+        <div class="relative rounded-2xl overflow-hidden border border-ocean-600/30 group">
+          <img src="/images/cities/de.webp" alt="Berlin" width="300" height="300" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+          <div class="relative z-10 p-4 flex flex-col justify-end min-h-[220px] sm:min-h-[260px]">
+            <h3 class="font-display text-lg font-black text-white leading-tight">Berlin</h3>
+            <p class="text-[10px] text-white/50 uppercase tracking-wider mb-3">Deutschland</p>
+            <span id="clock-de" class="font-mono text-2xl font-bold text-white tabular-nums mb-2">--:--:--</span>
+            <div class="flex items-center gap-1.5 mb-1">
+              <span id="weather-icon-de" class="text-sm">--</span>
+              <span id="weather-temp-de" class="font-mono text-lg font-bold text-white">--°</span>
+            </div>
+            <div class="flex items-center gap-2 text-[10px] text-white/60">
+              <span id="weather-desc-de" class="uppercase">--</span>
+              <span>&#183;</span>
+              <span id="weather-wind-de">--</span>
+            </div>
           </div>
-          <span id="clock-de" class="font-mono text-base font-bold text-[#e0e0e0] tabular-nums">--:--:--</span>
-          <span id="weather-temp-de" class="font-mono text-xs text-[#ccc] hidden md:block">--°C</span>
-          <div class="hidden md:flex items-center gap-1.5">
-            <span id="weather-icon-de" class="text-sm">--</span>
-            <span id="weather-desc-de" class="font-mono text-xs text-[#888]">--</span>
-          </div>
-          <span id="weather-wind-de" class="font-mono text-xs text-[#888]">--</span>
-          <span class="font-mono text-xs text-[#666]">UTC+1</span>
         </div>
 
         <!-- New York -->
-        <div class="grid grid-cols-[1fr_1fr_1fr_1fr] md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr_1fr] border-b border-[#1a1a1a] px-4 py-2.5 items-center hover:bg-[#151515] transition-colors">
-          <div class="flex items-center gap-2">
-            <span class="text-sm">🇺🇸</span>
-            <span class="font-mono text-sm text-[#ccc]">NEW YORK</span>
+        <div class="relative rounded-2xl overflow-hidden border border-ocean-600/30 group">
+          <img src="/images/cities/ny.webp" alt="New York" width="300" height="300" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+          <div class="relative z-10 p-4 flex flex-col justify-end min-h-[220px] sm:min-h-[260px]">
+            <h3 class="font-display text-lg font-black text-white leading-tight">New York</h3>
+            <p class="text-[10px] text-white/50 uppercase tracking-wider mb-3">USA</p>
+            <span id="clock-ny" class="font-mono text-2xl font-bold text-white tabular-nums mb-2">--:--:--</span>
+            <div class="flex items-center gap-1.5 mb-1">
+              <span id="weather-icon-ny" class="text-sm">--</span>
+              <span id="weather-temp-ny" class="font-mono text-lg font-bold text-white">--°</span>
+            </div>
+            <div class="flex items-center gap-2 text-[10px] text-white/60">
+              <span id="weather-desc-ny" class="uppercase">--</span>
+              <span>&#183;</span>
+              <span id="weather-wind-ny">--</span>
+            </div>
           </div>
-          <span id="clock-ny" class="font-mono text-base font-bold text-[#e0e0e0] tabular-nums">--:--:--</span>
-          <span id="weather-temp-ny" class="font-mono text-xs text-[#ccc] hidden md:block">--°C</span>
-          <div class="hidden md:flex items-center gap-1.5">
-            <span id="weather-icon-ny" class="text-sm">--</span>
-            <span id="weather-desc-ny" class="font-mono text-xs text-[#888]">--</span>
-          </div>
-          <span id="weather-wind-ny" class="font-mono text-xs text-[#888]">--</span>
-          <span class="font-mono text-xs text-[#666]">UTC-5</span>
         </div>
 
         <!-- Bali -->
-        <div class="grid grid-cols-[1fr_1fr_1fr_1fr] md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr_1fr] border-b border-[#1a1a1a] px-4 py-2.5 items-center hover:bg-[#151515] transition-colors">
-          <div class="flex items-center gap-2">
-            <span class="text-sm">🇮🇩</span>
-            <span class="font-mono text-sm text-[#ccc]">BALI</span>
+        <div class="relative rounded-2xl overflow-hidden border border-ocean-600/30 group">
+          <img src="/images/cities/bali.webp" alt="Bali" width="300" height="300" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+          <div class="relative z-10 p-4 flex flex-col justify-end min-h-[220px] sm:min-h-[260px]">
+            <h3 class="font-display text-lg font-black text-white leading-tight">Bali</h3>
+            <p class="text-[10px] text-white/50 uppercase tracking-wider mb-3">Indonesien</p>
+            <span id="clock-bali" class="font-mono text-2xl font-bold text-white tabular-nums mb-2">--:--:--</span>
+            <div class="flex items-center gap-1.5 mb-1">
+              <span id="weather-icon-bali" class="text-sm">--</span>
+              <span id="weather-temp-bali" class="font-mono text-lg font-bold text-white">--°</span>
+            </div>
+            <div class="flex items-center gap-2 text-[10px] text-white/60">
+              <span id="weather-desc-bali" class="uppercase">--</span>
+              <span>&#183;</span>
+              <span id="weather-wind-bali">--</span>
+            </div>
           </div>
-          <span id="clock-bali" class="font-mono text-base font-bold text-[#e0e0e0] tabular-nums">--:--:--</span>
-          <span id="weather-temp-bali" class="font-mono text-xs text-[#ccc] hidden md:block">--°C</span>
-          <div class="hidden md:flex items-center gap-1.5">
-            <span id="weather-icon-bali" class="text-sm">--</span>
-            <span id="weather-desc-bali" class="font-mono text-xs text-[#888]">--</span>
-          </div>
-          <span id="weather-wind-bali" class="font-mono text-xs text-[#888]">--</span>
-          <span class="font-mono text-xs text-[#666]">UTC+8</span>
         </div>
 
         <!-- Sydney -->
-        <div class="grid grid-cols-[1fr_1fr_1fr_1fr] md:grid-cols-[1.2fr_1fr_1fr_1fr_1fr_1fr] px-4 py-2.5 items-center hover:bg-[#151515] transition-colors">
-          <div class="flex items-center gap-2">
-            <span class="text-sm">🇦🇺</span>
-            <span class="font-mono text-sm text-[#ccc]">SYDNEY</span>
-          </div>
-          <span id="clock-syd" class="font-mono text-base font-bold text-[#e0e0e0] tabular-nums">--:--:--</span>
-          <span id="weather-temp-syd" class="font-mono text-xs text-[#ccc] hidden md:block">--°C</span>
-          <div class="hidden md:flex items-center gap-1.5">
-            <span id="weather-icon-syd" class="text-sm">--</span>
-            <span id="weather-desc-syd" class="font-mono text-xs text-[#888]">--</span>
-          </div>
-          <span id="weather-wind-syd" class="font-mono text-xs text-[#888]">--</span>
-          <span class="font-mono text-xs text-[#666]">UTC+11</span>
-        </div>
-
-        <!-- Bottom ticker -->
-        <div class="bg-[#1a1a1a] border-t border-[#333] px-4 py-1.5 overflow-hidden">
-          <div class="flex items-center gap-4 text-[10px] font-mono text-[#666]">
-            <span class="text-[#88ff88] shrink-0">&#9679; WETTER</span>
-            <span id="ticker-humidity" class="shrink-0">HUMIDITY --% </span>
-            <span class="shrink-0">|</span>
-            <span id="ticker-uv" class="shrink-0">UV-INDEX --</span>
-            <span class="shrink-0">|</span>
-            <span class="shrink-0">LOCATION 9.73°N 100.01°E</span>
-            <span class="shrink-0">|</span>
-            <span class="shrink-0">BEACH MONEY TEAM HQ</span>
+        <div class="relative rounded-2xl overflow-hidden border border-ocean-600/30 group sm:col-span-3 lg:col-span-1">
+          <img src="/images/cities/syd.webp" alt="Sydney" width="300" height="300" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+          <div class="relative z-10 p-4 flex flex-col justify-end min-h-[220px] sm:min-h-[260px]">
+            <h3 class="font-display text-lg font-black text-white leading-tight">Sydney</h3>
+            <p class="text-[10px] text-white/50 uppercase tracking-wider mb-3">Australien</p>
+            <span id="clock-syd" class="font-mono text-2xl font-bold text-white tabular-nums mb-2">--:--:--</span>
+            <div class="flex items-center gap-1.5 mb-1">
+              <span id="weather-icon-syd" class="text-sm">--</span>
+              <span id="weather-temp-syd" class="font-mono text-lg font-bold text-white">--°</span>
+            </div>
+            <div class="flex items-center gap-2 text-[10px] text-white/60">
+              <span id="weather-desc-syd" class="uppercase">--</span>
+              <span>&#183;</span>
+              <span id="weather-wind-syd">--</span>
+            </div>
           </div>
         </div>
       </div>
@@ -683,12 +675,6 @@ const affiliates = [
       if (el('clock-bali')) el('clock-bali')!.textContent = fmt('Asia/Makassar');
       if (el('clock-syd')) el('clock-syd')!.textContent = fmt('Australia/Sydney');
 
-      // Board date
-      if (el('board-date')) {
-        el('board-date')!.textContent = new Date().toLocaleDateString('en-GB', {
-          timeZone: 'Asia/Bangkok', weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
-        }).toUpperCase();
-      }
     }
     updateClocks();
     setInterval(updateClocks, 1000);
@@ -709,7 +695,7 @@ const affiliates = [
 
     function applyWeather(prefix: string, c: any) {
       const [desc, icon] = weatherCodes[c.weather_code] || ['--', '--'];
-      if (el('weather-temp' + prefix)) el('weather-temp' + prefix)!.textContent = Math.round(c.temperature_2m) + '°C';
+      if (el('weather-temp' + prefix)) el('weather-temp' + prefix)!.textContent = Math.round(c.temperature_2m) + '°';
       if (el('weather-desc' + prefix)) el('weather-desc' + prefix)!.textContent = desc;
       if (el('weather-icon' + prefix)) el('weather-icon' + prefix)!.textContent = icon;
       if (el('weather-wind' + prefix)) el('weather-wind' + prefix)!.textContent = Math.round(c.wind_speed_10m) + ' km/h';
@@ -725,8 +711,6 @@ const affiliates = [
         const kp = data[0].current;
         const kpd = data[0].daily;
         applyWeather('', kp);
-        if (el('ticker-humidity')) el('ticker-humidity')!.textContent = 'HUMIDITY ' + kp.relative_humidity_2m + '%';
-        if (el('ticker-uv') && kpd.uv_index_max) el('ticker-uv')!.textContent = 'UV-INDEX ' + Math.round(kpd.uv_index_max[0]);
 
         // Other cities
         const suffixes = ['-de', '-ny', '-bali', '-syd'];
