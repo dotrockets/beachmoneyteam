@@ -2,6 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+).slice(0, 3);
 
 const affiliates = [
   {
@@ -130,7 +135,7 @@ const affiliates = [
   </section>
 
   <!-- Story Section — Comic Panel Style -->
-  <section id="story" class="relative py-32 overflow-hidden">
+  <section id="story" class="relative py-32 overflow-hidden fade-in">
     <!-- Comic beach background -->
     <div class="absolute inset-0">
       <img src="/images/comic-story-bg.webp" alt="" width="1920" height="1080" class="w-full h-full object-cover opacity-40" loading="lazy" />
@@ -222,7 +227,7 @@ const affiliates = [
   </section>
 
   <!-- Tools Section -->
-  <section id="tools" class="relative py-32">
+  <section id="tools" class="relative py-32 fade-in">
     <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 to-ocean-800"></div>
     <!-- Comic halftone dot pattern overlay -->
     <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 16px 16px;"></div>
@@ -312,8 +317,83 @@ const affiliates = [
     </div>
   </section>
 
+  <!-- Blog Preview Section -->
+  <section class="relative py-24 overflow-hidden fade-in">
+    <div class="absolute inset-0 bg-gradient-to-b from-ocean-800 via-ocean-900 to-ocean-800"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      <div class="flex items-end justify-between mb-12">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-sunset-400 mb-3">Aus dem Blog</span>
+          <h2 class="font-display text-3xl md:text-4xl font-black text-sand-100">Neueste Beiträge</h2>
+        </div>
+        <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-sunset-400 hover:text-sunset-300 transition-colors">
+          Alle Beiträge <span>&#8594;</span>
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {posts.map((post) => {
+          const dateFormatted = new Date(post.data.date).toLocaleDateString('de-DE', {
+            day: 'numeric',
+            month: 'short',
+          });
+          return (
+            <a href={`/blog/${post.id}`} class="group block">
+              <article class="relative rounded-2xl overflow-hidden border border-ocean-600/30 group-hover:border-sunset-500/30 transition-all duration-500 h-full bg-ocean-800/60">
+                {post.data.image && (
+                  <div class="relative aspect-[16/10] overflow-hidden">
+                    <img src={post.data.image} alt={post.data.title} width="400" height="250" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ocean-900/70 via-transparent to-transparent"></div>
+                  </div>
+                )}
+                <div class="p-5">
+                  <time class="text-xs text-sand-400 mb-2 block" datetime={post.data.date}>{dateFormatted}</time>
+                  <h3 class="font-display text-lg font-bold text-sand-100 mb-2 group-hover:text-sunset-400 transition-colors leading-snug">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-sm text-sand-300 leading-relaxed line-clamp-2">{post.data.description}</p>
+                </div>
+              </article>
+            </a>
+          );
+        })}
+      </div>
+
+      <a href="/blog" class="sm:hidden flex items-center justify-center gap-2 mt-8 text-sm font-semibold text-sunset-400 hover:text-sunset-300 transition-colors">
+        Alle Beiträge <span>&#8594;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Discover Section — Cross-links -->
+  <section class="relative py-20 overflow-hidden fade-in">
+    <div class="absolute inset-0 bg-ocean-800"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/gear" class="group relative rounded-2xl border border-ocean-600/30 hover:border-sunset-500/30 bg-ocean-900/50 p-8 transition-all duration-300">
+          <span class="text-4xl block mb-4">🎒</span>
+          <h3 class="font-display text-xl font-bold text-sand-100 mb-2 group-hover:text-sunset-400 transition-colors">Gear Guide</h3>
+          <p class="text-sm text-sand-300 leading-relaxed mb-4">15+ Produkte für Digital Nomads. Getestet und ehrlich bewertet.</p>
+          <span class="text-sm font-semibold text-sunset-400 inline-flex items-center gap-1 group-hover:gap-2 transition-all">Ansehen <span>&#8594;</span></span>
+        </a>
+        <a href="/tools" class="group relative rounded-2xl border border-ocean-600/30 hover:border-sunset-500/30 bg-ocean-900/50 p-8 transition-all duration-300">
+          <span class="text-4xl block mb-4">&#9889;</span>
+          <h3 class="font-display text-xl font-bold text-sand-100 mb-2 group-hover:text-sunset-400 transition-colors">Tool Stack</h3>
+          <p class="text-sm text-sand-300 leading-relaxed mb-4">Software und Services die mein Nomad-Leben möglich machen.</p>
+          <span class="text-sm font-semibold text-sunset-400 inline-flex items-center gap-1 group-hover:gap-2 transition-all">Ansehen <span>&#8594;</span></span>
+        </a>
+        <a href="/about" class="group relative rounded-2xl border border-ocean-600/30 hover:border-sunset-500/30 bg-ocean-900/50 p-8 transition-all duration-300">
+          <span class="text-4xl block mb-4">🏝️</span>
+          <h3 class="font-display text-xl font-bold text-sand-100 mb-2 group-hover:text-sunset-400 transition-colors">Meine Story</h3>
+          <p class="text-sm text-sand-300 leading-relaxed mb-4">Von 9-to-5 in Deutschland zu Remote auf Koh Phangan.</p>
+          <span class="text-sm font-semibold text-sunset-400 inline-flex items-center gap-1 group-hover:gap-2 transition-all">Lesen <span>&#8594;</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA / Newsletter Section — Comic style -->
-  <section id="start" class="relative py-32 overflow-hidden">
+  <section id="start" class="relative py-32 overflow-hidden fade-in">
     <!-- Coworking scene background -->
     <div class="absolute inset-0">
       <img src="/images/comic-newsletter-bg.webp" alt="" width="1920" height="1080" class="w-full h-full object-cover opacity-40" loading="lazy" />
@@ -371,6 +451,17 @@ const affiliates = [
 
   <!-- Scripts -->
   <script>
+    // Scroll fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
     // Newsletter Form
     const form = document.getElementById('newsletter-form') as HTMLFormElement | null;
     const btn = document.getElementById('newsletter-btn');
