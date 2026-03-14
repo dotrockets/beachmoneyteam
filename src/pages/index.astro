@@ -129,60 +129,96 @@ const affiliates = [
     </div>
   </section>
 
-  <!-- Story Section -->
+  <!-- Story Section — Comic Panel Style -->
   <section id="story" class="relative py-32 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 via-ocean-800/50 to-ocean-900"></div>
+    <!-- Subtle palm leaf decorations -->
+    <div class="absolute top-0 left-0 w-64 h-64 opacity-[0.04]">
+      <svg viewBox="0 0 200 200" fill="none"><path d="M10,190 Q50,100 30,20 Q80,80 150,30 Q100,90 180,150 Q100,120 60,180 Z" fill="currentColor" class="text-palm-400"/></svg>
+    </div>
+    <div class="absolute bottom-0 right-0 w-64 h-64 opacity-[0.04] rotate-180">
+      <svg viewBox="0 0 200 200" fill="none"><path d="M10,190 Q50,100 30,20 Q80,80 150,30 Q100,90 180,150 Q100,120 60,180 Z" fill="currentColor" class="text-palm-400"/></svg>
+    </div>
+
     <div class="relative z-10 max-w-4xl mx-auto px-6">
-      <div class="grid md:grid-cols-[1fr_2px_1fr] gap-12 items-start">
-        <!-- Before -->
-        <div class="space-y-6">
-          <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-coral/80 bg-coral/10 px-3 py-1 rounded-full">Vorher</span>
-          <h3 class="font-display text-3xl font-bold text-sand-200">9-to-5 in Deutschland</h3>
-          <ul class="space-y-4 text-sand-400">
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-coral shrink-0">&#10005;</span>
-              <span>Jeden Morgen im Stau stehen</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-coral shrink-0">&#10005;</span>
-              <span>Für anderer Leute Träume arbeiten</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-coral shrink-0">&#10005;</span>
-              <span>2 Wochen Urlaub als "Freiheit"</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-coral shrink-0">&#10005;</span>
-              <span>Immer das Gefühl: da muss mehr sein</span>
-            </li>
-          </ul>
+      <div class="grid md:grid-cols-2 gap-8 items-stretch">
+        <!-- Before — Comic panel -->
+        <div class="relative border-[3px] border-ocean-600/40 rounded-2xl overflow-hidden bg-ocean-800/50 p-8 md:p-10">
+          <!-- Comic panel corner marks -->
+          <div class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-coral/40"></div>
+          <div class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-coral/40"></div>
+          <div class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-coral/40"></div>
+          <div class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-coral/40"></div>
+
+          <div class="space-y-6">
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-coral/80 bg-coral/10 px-3 py-1 rounded-full border border-coral/20">Vorher</span>
+            <h3 class="font-display text-3xl font-bold text-sand-200">9-to-5 in<br>Deutschland</h3>
+            <ul class="space-y-4 text-sand-400">
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-coral shrink-0 text-lg">&#10005;</span>
+                <span>Jeden Morgen im Stau stehen</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-coral shrink-0 text-lg">&#10005;</span>
+                <span>Für anderer Leute Träume arbeiten</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-coral shrink-0 text-lg">&#10005;</span>
+                <span>2 Wochen Urlaub als "Freiheit"</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-coral shrink-0 text-lg">&#10005;</span>
+                <span>Immer das Gefühl: da muss mehr sein</span>
+              </li>
+            </ul>
+            <!-- Comic mood indicator -->
+            <div class="text-4xl opacity-60 text-center pt-2">&#128164;</div>
+          </div>
         </div>
 
-        <!-- Divider -->
-        <div class="hidden md:block bg-gradient-to-b from-transparent via-sunset-500/50 to-transparent h-full"></div>
+        <!-- After — Comic panel with tropical flair -->
+        <div class="relative border-[3px] border-seafoam/30 rounded-2xl overflow-hidden p-8 md:p-10">
+          <!-- Tropical background glow -->
+          <div class="absolute inset-0 bg-gradient-to-br from-palm-900/20 via-ocean-800/50 to-ocean-900/80"></div>
+          <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-sunset-500/[0.06] rounded-full blur-3xl"></div>
 
-        <!-- After -->
-        <div class="space-y-6">
-          <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-seafoam/80 bg-seafoam/10 px-3 py-1 rounded-full">Jetzt</span>
-          <h3 class="font-display text-3xl font-bold text-sand-200">Remote auf Koh Phangan</h3>
-          <ul class="space-y-4 text-sand-300">
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-seafoam shrink-0">&#10003;</span>
-              <span>Aufwachen wann ich will, Laptop auf</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-seafoam shrink-0">&#10003;</span>
-              <span>Revenue-Streams die 24/7 laufen</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-seafoam shrink-0">&#10003;</span>
-              <span>Strand in 5 Minuten, Coworking in 10</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-seafoam shrink-0">&#10003;</span>
-              <span>Mein Leben, meine Regeln, mein Tempo</span>
-            </li>
-          </ul>
+          <!-- Comic panel corner marks -->
+          <div class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-seafoam/40 z-10"></div>
+          <div class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-seafoam/40 z-10"></div>
+          <div class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-seafoam/40 z-10"></div>
+          <div class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-seafoam/40 z-10"></div>
+
+          <div class="relative z-10 space-y-6">
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-seafoam/80 bg-seafoam/10 px-3 py-1 rounded-full border border-seafoam/20">Jetzt</span>
+            <h3 class="font-display text-3xl font-bold text-sand-200">Remote auf<br>Koh Phangan</h3>
+            <ul class="space-y-4 text-sand-300">
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-seafoam shrink-0 text-lg">&#10003;</span>
+                <span>Aufwachen wann ich will, Laptop auf</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-seafoam shrink-0 text-lg">&#10003;</span>
+                <span>Revenue-Streams die 24/7 laufen</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-seafoam shrink-0 text-lg">&#10003;</span>
+                <span>Strand in 5 Minuten, Coworking in 10</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 text-seafoam shrink-0 text-lg">&#10003;</span>
+                <span>Mein Leben, meine Regeln, mein Tempo</span>
+              </li>
+            </ul>
+            <!-- Comic mood indicator -->
+            <div class="text-4xl opacity-60 text-center pt-2">&#127796;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comic-style "VS" connector -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex">
+        <div class="bg-sunset-500 text-ocean-900 font-display font-black text-xl w-14 h-14 rounded-full flex items-center justify-center border-4 border-ocean-900 shadow-[0_0_30px_rgba(230,115,0,0.3)] z-20">
+          VS
         </div>
       </div>
     </div>
@@ -191,9 +227,11 @@ const affiliates = [
   <!-- Tools Section -->
   <section id="tools" class="relative py-32">
     <div class="absolute inset-0 bg-gradient-to-b from-ocean-900 to-ocean-800"></div>
+    <!-- Comic halftone dot pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 16px 16px;"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-6">
       <div class="text-center mb-20">
-        <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-sunset-400 mb-4">Mein Stack</span>
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-sunset-400 mb-4 bg-sunset-500/10 border border-sunset-500/20 px-4 py-1.5 rounded-full">Mein Stack</span>
         <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-black text-sand-100 mb-6 text-pretty">
           3 Tools. Ein neues Leben.
         </h2>
@@ -277,17 +315,29 @@ const affiliates = [
     </div>
   </section>
 
-  <!-- CTA / Newsletter Section -->
+  <!-- CTA / Newsletter Section — Comic style -->
   <section id="start" class="relative py-32 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-ocean-800 via-ocean-900 to-ocean-900"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(230,115,0,0.08),transparent_70%)]"></div>
+    <!-- Beach scene background -->
+    <div class="absolute inset-0">
+      <img src="/images/hero-comic-bg.webp" alt="" width="1920" height="600" class="w-full h-full object-cover opacity-10" loading="lazy" />
+      <div class="absolute inset-0 bg-gradient-to-t from-ocean-900 via-ocean-900/90 to-ocean-900"></div>
+    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(230,115,0,0.1),transparent_60%)]"></div>
 
     <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
-      <span class="inline-block text-5xl mb-6">🦀</span>
-      <h2 class="font-display text-4xl md:text-5xl font-black text-sand-100 mb-6 text-pretty">
-        Bereit für dein Beach&nbsp;Money?
-      </h2>
-      <p class="text-sand-400 text-lg mb-10 leading-relaxed">
+      <!-- Comic speech bubble style -->
+      <div class="relative inline-block mb-8">
+        <div class="bg-ocean-800/80 backdrop-blur-sm border-2 border-sunset-500/30 rounded-3xl px-8 py-6 relative">
+          <span class="text-5xl block mb-3">🦀</span>
+          <h2 class="font-display text-4xl md:text-5xl font-black text-sand-100 text-pretty">
+            Bereit für dein<br>Beach&nbsp;Money?
+          </h2>
+          <!-- Speech bubble tail -->
+          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-ocean-800/80 border-b-2 border-r-2 border-sunset-500/30 rotate-45"></div>
+        </div>
+      </div>
+
+      <p class="text-sand-400 text-lg mb-10 leading-relaxed mt-6">
         Ich teile jede Woche was funktioniert, was nicht, und welche neuen Revenue-Streams ich aufbaue. Kein Spam, kein Hype — nur echte Insights aus dem Nomaden-Leben.
       </p>
 
@@ -301,7 +351,7 @@ const affiliates = [
           placeholder="deine@email.de"
           spellcheck="false"
           required
-          class="flex-1 bg-ocean-800 border border-ocean-600/50 rounded-full px-6 py-3.5 text-sand-200 placeholder:text-sand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset-500 focus-visible:border-transparent transition-all"
+          class="flex-1 bg-ocean-800 border-2 border-ocean-600/50 rounded-full px-6 py-3.5 text-sand-200 placeholder:text-sand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset-500 focus-visible:border-transparent transition-all"
         />
         <button
           type="submit"

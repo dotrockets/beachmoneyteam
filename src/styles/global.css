@@ -184,3 +184,12 @@
   font-style: italic;
   color: var(--color-sand-400);
 }
+
+/* Scrollbar hide for category navs */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
