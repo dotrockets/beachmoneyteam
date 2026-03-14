@@ -30,7 +30,7 @@ const featuredDate = new Date(featured.data.date).toLocaleDateString('de-DE', {
       <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-sand-100 mb-6 text-pretty">
         Insights aus dem<br>Nomad-Leben
       </h1>
-      <p class="max-w-2xl mx-auto text-lg text-sand-400 leading-relaxed text-pretty">
+      <p class="max-w-2xl mx-auto text-lg text-sand-300 leading-relaxed text-pretty">
         Ehrliche Erfahrungen, Gear Reviews und alles was ich auf dem Weg gelernt habe. Kein Clickbait, kein Hype.
       </p>
     </div>
@@ -57,7 +57,7 @@ const featuredDate = new Date(featured.data.date).toLocaleDateString('de-DE', {
           <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
             <div class="flex flex-wrap items-center gap-3 mb-4">
               <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-sunset-500/90 text-ocean-900">Neuester Beitrag</span>
-              <time class="text-xs text-sand-400" datetime={featured.data.date}>{featuredDate}</time>
+              <time class="text-xs text-sand-300" datetime={featured.data.date}>{featuredDate}</time>
               {featured.data.tags?.map((tag) => (
                 <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-ocean-800/60 backdrop-blur-sm text-sand-300 border border-ocean-600/30">
                   {tag}
@@ -67,7 +67,7 @@ const featuredDate = new Date(featured.data.date).toLocaleDateString('de-DE', {
             <h2 class="font-display text-3xl md:text-4xl font-black text-sand-100 mb-3 group-hover:text-sunset-400 transition-colors">
               {featured.data.title}
             </h2>
-            <p class="text-sand-300 leading-relaxed max-w-2xl mb-4 hidden sm:block">{featured.data.description}</p>
+            <p class="text-sand-200 leading-relaxed max-w-2xl mb-4 hidden sm:block">{featured.data.description}</p>
             <span class="inline-flex items-center gap-2 text-sm font-bold text-sunset-400 group-hover:gap-3 transition-all">
               Weiterlesen <span>&#8594;</span>
             </span>
@@ -104,14 +104,14 @@ const featuredDate = new Date(featured.data.date).toLocaleDateString('de-DE', {
                   <!-- Meta + description below -->
                   <div class="p-5 pt-4">
                     <div class="flex flex-wrap items-center gap-2 mb-3">
-                      <time class="text-xs text-sand-600" datetime={post.data.date}>{dateFormatted}</time>
+                      <time class="text-xs text-sand-400" datetime={post.data.date}>{dateFormatted}</time>
                       {post.data.tags?.map((tag) => (
-                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-ocean-700/50 text-sand-500">
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-ocean-700/50 text-sand-400">
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <p class="text-sm text-sand-400 leading-relaxed mb-3">{post.data.description}</p>
+                    <p class="text-sm text-sand-300 leading-relaxed mb-3">{post.data.description}</p>
                     <span class="inline-flex items-center gap-2 text-sm font-medium text-sunset-400 group-hover:gap-3 transition-all">
                       Lesen <span>&#8594;</span>
                     </span>

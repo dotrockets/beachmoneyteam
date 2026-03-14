@@ -242,7 +242,7 @@ const categories = [
       <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-sand-100 mb-6 text-pretty">
         Digital Nomad<br>Gear Guide
       </h1>
-      <p class="max-w-2xl mx-auto text-lg text-sand-400 leading-relaxed text-pretty">
+      <p class="max-w-2xl mx-auto text-lg text-sand-300 leading-relaxed text-pretty">
         Alles was ich täglich auf Koh Phangan nutze. Jedes Produkt selbst getestet, ehrlich bewertet. Kein Bullshit, nur das was wirklich funktioniert.
       </p>
     </div>
@@ -254,7 +254,7 @@ const categories = [
       {categories.map((cat) => (
         <a
           href={`#${cat.name.toLowerCase().replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ä/g, 'ae')}`}
-          class="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-sand-400 hover:text-sand-200 bg-ocean-800/50 hover:bg-ocean-700/50 border border-ocean-600/20 transition-all"
+          class="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-sand-300 hover:text-sand-100 bg-ocean-800/50 hover:bg-ocean-700/50 border border-ocean-600/20 transition-all"
         >
           <span>{cat.emoji}</span>
           <span>{cat.name}</span>
@@ -305,12 +305,12 @@ const categories = [
                         )}
                       </div>
                       <h3 class="font-display text-xl md:text-2xl font-bold text-sand-100 mb-1">{product.title}</h3>
-                      <p class="text-sm text-sand-500 mb-3">{product.subtitle}</p>
-                      <p class="text-sand-400 text-sm leading-relaxed mb-4">{product.description}</p>
+                      <p class="text-sm text-sand-400 mb-3">{product.subtitle}</p>
+                      <p class="text-sand-300 text-sm leading-relaxed mb-4">{product.description}</p>
 
                       <ul class="flex flex-wrap gap-2 mb-4">
                         {product.features.map((feature) => (
-                          <li class="flex items-center gap-1.5 text-xs text-sand-500 bg-ocean-700/30 px-2.5 py-1 rounded-full">
+                          <li class="flex items-center gap-1.5 text-xs text-sand-400 bg-ocean-700/40 px-2.5 py-1 rounded-full">
                             <span class="text-seafoam text-[8px]">&#9679;</span>
                             {feature}
                           </li>
@@ -332,7 +332,7 @@ const categories = [
                         Bei Amazon ansehen
                         <span class="text-xs">&#8599;</span>
                       </a>
-                      <span class="text-[10px] text-sand-600 uppercase tracking-wider">Amazon Associates</span>
+                      <span class="text-[10px] text-sand-400 uppercase tracking-wider">Amazon Associates</span>
                     </div>
                   </div>
                 </div>
@@ -347,7 +347,7 @@ const categories = [
   <!-- Affiliate Disclaimer -->
   <section class="border-t border-ocean-700/30 py-16 bg-ocean-900">
     <div class="max-w-3xl mx-auto px-6 text-center">
-      <p class="text-sm text-sand-500 leading-relaxed">
+      <p class="text-sm text-sand-400 leading-relaxed">
         * Alle Links auf dieser Seite sind Affiliate-Links (Amazon Associates, tag: tapu). Wenn du über diese Links kaufst, erhalte ich eine kleine Provision — für dich ändert sich am Preis nichts. Ich empfehle nur Produkte die ich selbst nutze und getestet habe.
         <a href="/affiliate-disclaimer" class="text-sunset-400 hover:text-sunset-300 underline underline-offset-2 ml-1">Mehr erfahren</a>
       </p>

@@ -90,12 +90,24 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* Blog prose styles */
+/* Smooth focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-sunset-400);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-sunset-500);
+  color: var(--color-ocean-900);
+}
+
+/* Blog prose styles — optimized for readability */
 .prose-bmt h2 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--color-sand-200);
+  font-size: 1.625rem;
+  color: var(--color-sand-100);
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -103,21 +115,23 @@
 .prose-bmt h3 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--color-sand-200);
+  font-size: 1.3rem;
+  color: var(--color-sand-100);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
 
 .prose-bmt p {
-  color: var(--color-sand-300);
-  line-height: 1.75;
+  color: var(--color-sand-200);
+  font-size: 1.0625rem;
+  line-height: 1.8;
   margin-bottom: 1.25rem;
 }
 
 .prose-bmt ul,
 .prose-bmt ol {
-  color: var(--color-sand-300);
+  color: var(--color-sand-200);
+  font-size: 1.0625rem;
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
 }
@@ -132,18 +146,18 @@
 
 .prose-bmt li {
   margin-bottom: 0.5rem;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .prose-bmt strong {
-  color: var(--color-sand-200);
+  color: var(--color-sand-100);
   font-weight: 600;
 }
 
 .prose-bmt a {
   color: var(--color-sunset-400);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
   transition: color 0.2s;
 }
 
@@ -155,34 +169,34 @@
   width: 100%;
   margin-bottom: 1.5rem;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
 .prose-bmt th {
   text-align: left;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid color-mix(in srgb, var(--color-ocean-600) 50%, transparent);
-  color: var(--color-sand-400);
-  font-weight: 500;
+  color: var(--color-sand-300);
+  font-weight: 600;
 }
 
 .prose-bmt td {
   padding: 0.75rem 1rem;
-  color: var(--color-sand-300);
+  color: var(--color-sand-200);
 }
 
 .prose-bmt hr {
   border: none;
-  border-top: 1px solid color-mix(in srgb, var(--color-ocean-600) 30%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-ocean-600) 40%, transparent);
   margin: 2rem 0;
 }
 
 .prose-bmt blockquote {
   border-left: 3px solid var(--color-sunset-500);
-  padding-left: 1rem;
+  padding-left: 1.25rem;
   margin-bottom: 1.25rem;
   font-style: italic;
-  color: var(--color-sand-400);
+  color: var(--color-sand-300);
 }
 
 /* Scrollbar hide for category navs */

@@ -20,7 +20,7 @@ const links = [
       <span class="text-2xl">🏝️</span>
       <span class="font-display text-xl font-bold tracking-tight text-sand-100 group-hover:text-sunset-400 transition-colors">Beach Money</span>
     </a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-sand-300">
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-sand-200">
       {links.map((link) => (
         <a
           href={link.href}
@@ -42,11 +42,11 @@ const links = [
   </div>
   <!-- Mobile Menu Panel -->
   <div id="mobile-menu" class="md:hidden hidden border-t border-ocean-700/30 bg-ocean-900/95 backdrop-blur-xl">
-    <div class="px-6 py-6 flex flex-col gap-4 text-base font-medium text-sand-300">
+    <div class="px-6 py-6 flex flex-col gap-2 text-base font-semibold text-sand-200">
       {links.map((link) => (
         <a
           href={link.href}
-          class={`py-2 ${active === link.id ? 'text-sunset-400' : 'hover:text-sunset-400 transition-colors'}`}
+          class={`py-3 ${active === link.id ? 'text-sunset-400' : 'hover:text-sunset-400 transition-colors'}`}
         >
           {link.label}
         </a>
