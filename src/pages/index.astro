@@ -539,10 +539,161 @@ const affiliates = [
     </div>
   </section>
 
+  <!-- Live from Koh Phangan — Weather + World Clock -->
+  <section class="relative py-16 overflow-hidden">
+    <div class="absolute inset-0 bg-ocean-900"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-ocean-800/60 border border-ocean-600/30 rounded-full px-5 py-2 mb-4 text-sm text-sand-300">
+          <span class="inline-block w-2 h-2 rounded-full bg-seafoam animate-pulse"></span>
+          Live from Koh Phangan
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-center">
+        <!-- Weather -->
+        <div class="bg-ocean-800/60 border border-ocean-600/30 rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl" id="weather-icon">&#9728;&#65039;</span>
+            <div>
+              <h3 class="font-display text-lg font-bold text-sand-100">Koh Phangan</h3>
+              <p class="text-xs text-sand-400">Thailand, Gulf of Siam</p>
+            </div>
+          </div>
+          <div class="flex items-end gap-3 mb-4">
+            <span id="weather-temp" class="font-display text-5xl font-black text-sand-100">--°</span>
+            <span id="weather-desc" class="text-sand-300 text-sm mb-2">Wird geladen...</span>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-ocean-700/30 rounded-xl p-3 text-center">
+              <p class="text-xs text-sand-400 mb-1">Luftfeuchtigkeit</p>
+              <p id="weather-humidity" class="text-sm font-semibold text-sand-200">--%</p>
+            </div>
+            <div class="bg-ocean-700/30 rounded-xl p-3 text-center">
+              <p class="text-xs text-sand-400 mb-1">Wind</p>
+              <p id="weather-wind" class="text-sm font-semibold text-sand-200">-- km/h</p>
+            </div>
+            <div class="bg-ocean-700/30 rounded-xl p-3 text-center">
+              <p class="text-xs text-sand-400 mb-1">UV-Index</p>
+              <p id="weather-uv" class="text-sm font-semibold text-sand-200">--</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="hidden md:block w-px h-40 bg-gradient-to-b from-transparent via-ocean-600/40 to-transparent"></div>
+
+        <!-- World Clocks -->
+        <div class="bg-ocean-800/60 border border-ocean-600/30 rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-2xl">&#127760;</span>
+            <h3 class="font-display text-lg font-bold text-sand-100">Weltzeituhren</h3>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-lg">🇹🇭</span>
+                <div>
+                  <p class="text-sm font-semibold text-sand-200">Koh Phangan</p>
+                  <p class="text-xs text-sand-400">ICT (UTC+7)</p>
+                </div>
+              </div>
+              <span id="clock-kp" class="font-mono text-xl font-bold text-sunset-400">--:--</span>
+            </div>
+            <div class="border-t border-ocean-700/30"></div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-lg">🇩🇪</span>
+                <div>
+                  <p class="text-sm font-semibold text-sand-200">Berlin</p>
+                  <p class="text-xs text-sand-400">CET (UTC+1)</p>
+                </div>
+              </div>
+              <span id="clock-de" class="font-mono text-xl font-bold text-sand-200">--:--</span>
+            </div>
+            <div class="border-t border-ocean-700/30"></div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-lg">🇺🇸</span>
+                <div>
+                  <p class="text-sm font-semibold text-sand-200">New York</p>
+                  <p class="text-xs text-sand-400">EST (UTC-5)</p>
+                </div>
+              </div>
+              <span id="clock-ny" class="font-mono text-xl font-bold text-sand-200">--:--</span>
+            </div>
+            <div class="border-t border-ocean-700/30"></div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-lg">🇦🇺</span>
+                <div>
+                  <p class="text-sm font-semibold text-sand-200">Sydney</p>
+                  <p class="text-xs text-sand-400">AEDT (UTC+11)</p>
+                </div>
+              </div>
+              <span id="clock-syd" class="font-mono text-xl font-bold text-sand-200">--:--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <Footer />
 
   <!-- Scripts -->
   <script>
+    // World Clocks — update every second
+    function updateClocks() {
+      const fmt = (tz: string) => new Date().toLocaleTimeString('de-DE', {
+        timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit'
+      });
+      const el = (id: string) => document.getElementById(id);
+      if (el('clock-kp')) el('clock-kp')!.textContent = fmt('Asia/Bangkok');
+      if (el('clock-de')) el('clock-de')!.textContent = fmt('Europe/Berlin');
+      if (el('clock-ny')) el('clock-ny')!.textContent = fmt('America/New_York');
+      if (el('clock-syd')) el('clock-syd')!.textContent = fmt('Australia/Sydney');
+    }
+    updateClocks();
+    setInterval(updateClocks, 1000);
+
+    // Weather — Open-Meteo API (free, no key needed)
+    // Koh Phangan: 9.7319° N, 100.0136° E
+    async function loadWeather() {
+      try {
+        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=9.73&longitude=100.01&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&daily=uv_index_max&timezone=Asia/Bangkok&forecast_days=1');
+        const data = await res.json();
+        const c = data.current;
+        const d = data.daily;
+
+        const el = (id: string) => document.getElementById(id);
+        if (el('weather-temp')) el('weather-temp')!.textContent = Math.round(c.temperature_2m) + '°';
+        if (el('weather-humidity')) el('weather-humidity')!.textContent = c.relative_humidity_2m + '%';
+        if (el('weather-wind')) el('weather-wind')!.textContent = Math.round(c.wind_speed_10m) + ' km/h';
+        if (el('weather-uv') && d.uv_index_max) el('weather-uv')!.textContent = Math.round(d.uv_index_max[0]).toString();
+
+        // Weather code to description + icon
+        const codes: Record<number, [string, string]> = {
+          0: ['Klar', '\u2600\uFE0F'], 1: ['Überwiegend klar', '\uD83C\uDF24\uFE0F'],
+          2: ['Teilweise bewölkt', '\u26C5'], 3: ['Bewölkt', '\u2601\uFE0F'],
+          45: ['Neblig', '\uD83C\uDF2B\uFE0F'], 48: ['Neblig', '\uD83C\uDF2B\uFE0F'],
+          51: ['Leichter Nieselregen', '\uD83C\uDF26\uFE0F'], 53: ['Nieselregen', '\uD83C\uDF26\uFE0F'],
+          55: ['Starker Nieselregen', '\uD83C\uDF27\uFE0F'],
+          61: ['Leichter Regen', '\uD83C\uDF26\uFE0F'], 63: ['Regen', '\uD83C\uDF27\uFE0F'],
+          65: ['Starker Regen', '\uD83C\uDF27\uFE0F'],
+          80: ['Regenschauer', '\uD83C\uDF26\uFE0F'], 81: ['Schauer', '\uD83C\uDF27\uFE0F'],
+          82: ['Starke Schauer', '\u26C8\uFE0F'],
+          95: ['Gewitter', '\u26A1'], 96: ['Gewitter mit Hagel', '\u26A1'],
+        };
+        const [desc, icon] = codes[c.weather_code] || ['--', '\u2600\uFE0F'];
+        if (el('weather-desc')) el('weather-desc')!.textContent = desc;
+        if (el('weather-icon')) el('weather-icon')!.textContent = icon;
+      } catch {
+        // Silently fail — show placeholder
+      }
+    }
+    loadWeather();
+
     // Scroll fade-in animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
