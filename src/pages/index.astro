@@ -592,9 +592,12 @@ const affiliates = [
             <span class="font-mono text-sm text-[#ccc]">BERLIN</span>
           </div>
           <span id="clock-de" class="font-mono text-base font-bold text-[#e0e0e0] tabular-nums">--:--:--</span>
-          <span class="font-mono text-xs text-[#666] hidden md:block">—</span>
-          <span class="font-mono text-xs text-[#666] hidden md:block">—</span>
-          <span class="font-mono text-xs text-[#666]">—</span>
+          <span id="weather-temp-de" class="font-mono text-xs text-[#ccc] hidden md:block">--°C</span>
+          <div class="hidden md:flex items-center gap-1.5">
+            <span id="weather-icon-de" class="text-sm">--</span>
+            <span id="weather-desc-de" class="font-mono text-xs text-[#888]">--</span>
+          </div>
+          <span id="weather-wind-de" class="font-mono text-xs text-[#888]">--</span>
           <span class="font-mono text-xs text-[#666]">UTC+1</span>
         </div>
 
@@ -605,9 +608,12 @@ const affiliates = [
             <span class="font-mono text-sm text-[#ccc]">NEW YORK</span>
           </div>
           <span id="clock-ny" class="font-mono text-base font-bold text-[#e0e0e0] tabular-nums">--:--:--</span>
-          <span class="font-mono text-xs text-[#666] hidden md:block">—</span>
-          <span class="font-mono text-xs text-[#666] hidden md:block">—</span>
-          <span class="font-mono text-xs text-[#666]">—</span>
+          <span id="weather-temp-ny" class="font-mono text-xs text-[#ccc] hidden md:block">--°C</span>
+          <div class="hidden md:flex items-center gap-1.5">
+            <span id="weather-icon-ny" class="text-sm">--</span>
+            <span id="weather-desc-ny" class="font-mono text-xs text-[#888]">--</span>
+          </div>
+          <span id="weather-wind-ny" class="font-mono text-xs text-[#888]">--</span>
           <span class="font-mono text-xs text-[#666]">UTC-5</span>
         </div>
 
@@ -618,9 +624,12 @@ const affiliates = [
             <span class="font-mono text-sm text-[#ccc]">BALI</span>
           </div>
           <span id="clock-bali" class="font-mono text-base font-bold text-[#e0e0e0] tabular-nums">--:--:--</span>
-          <span class="font-mono text-xs text-[#666] hidden md:block">—</span>
-          <span class="font-mono text-xs text-[#666] hidden md:block">—</span>
-          <span class="font-mono text-xs text-[#666]">—</span>
+          <span id="weather-temp-bali" class="font-mono text-xs text-[#ccc] hidden md:block">--°C</span>
+          <div class="hidden md:flex items-center gap-1.5">
+            <span id="weather-icon-bali" class="text-sm">--</span>
+            <span id="weather-desc-bali" class="font-mono text-xs text-[#888]">--</span>
+          </div>
+          <span id="weather-wind-bali" class="font-mono text-xs text-[#888]">--</span>
           <span class="font-mono text-xs text-[#666]">UTC+8</span>
         </div>
 
@@ -631,9 +640,12 @@ const affiliates = [
             <span class="font-mono text-sm text-[#ccc]">SYDNEY</span>
           </div>
           <span id="clock-syd" class="font-mono text-base font-bold text-[#e0e0e0] tabular-nums">--:--:--</span>
-          <span class="font-mono text-xs text-[#666] hidden md:block">—</span>
-          <span class="font-mono text-xs text-[#666] hidden md:block">—</span>
-          <span class="font-mono text-xs text-[#666]">—</span>
+          <span id="weather-temp-syd" class="font-mono text-xs text-[#ccc] hidden md:block">--°C</span>
+          <div class="hidden md:flex items-center gap-1.5">
+            <span id="weather-icon-syd" class="text-sm">--</span>
+            <span id="weather-desc-syd" class="font-mono text-xs text-[#888]">--</span>
+          </div>
+          <span id="weather-wind-syd" class="font-mono text-xs text-[#888]">--</span>
           <span class="font-mono text-xs text-[#666]">UTC+11</span>
         </div>
 
@@ -681,34 +693,46 @@ const affiliates = [
     updateClocks();
     setInterval(updateClocks, 1000);
 
-    // Airport Board — Weather
+    // Airport Board — Weather for all cities (single batch request)
+    const weatherCodes: Record<number, [string, string]> = {
+      0: ['CLEAR', '\u2600\uFE0F'], 1: ['MOSTLY CLEAR', '\uD83C\uDF24\uFE0F'],
+      2: ['PARTLY CLOUDY', '\u26C5'], 3: ['OVERCAST', '\u2601\uFE0F'],
+      45: ['FOG', '\uD83C\uDF2B\uFE0F'], 48: ['FOG', '\uD83C\uDF2B\uFE0F'],
+      51: ['LIGHT DRIZZLE', '\uD83C\uDF26\uFE0F'], 53: ['DRIZZLE', '\uD83C\uDF26\uFE0F'],
+      55: ['HEAVY DRIZZLE', '\uD83C\uDF27\uFE0F'],
+      61: ['LIGHT RAIN', '\uD83C\uDF26\uFE0F'], 63: ['RAIN', '\uD83C\uDF27\uFE0F'],
+      65: ['HEAVY RAIN', '\uD83C\uDF27\uFE0F'],
+      80: ['SHOWERS', '\uD83C\uDF26\uFE0F'], 81: ['SHOWERS', '\uD83C\uDF27\uFE0F'],
+      82: ['HEAVY SHOWERS', '\u26C8\uFE0F'],
+      95: ['THUNDERSTORM', '\u26A1'], 96: ['THUNDERSTORM', '\u26A1'],
+    };
+
+    function applyWeather(prefix: string, c: any) {
+      const [desc, icon] = weatherCodes[c.weather_code] || ['--', '--'];
+      if (el('weather-temp' + prefix)) el('weather-temp' + prefix)!.textContent = Math.round(c.temperature_2m) + '°C';
+      if (el('weather-desc' + prefix)) el('weather-desc' + prefix)!.textContent = desc;
+      if (el('weather-icon' + prefix)) el('weather-icon' + prefix)!.textContent = icon;
+      if (el('weather-wind' + prefix)) el('weather-wind' + prefix)!.textContent = Math.round(c.wind_speed_10m) + ' km/h';
+    }
+
     async function loadWeather() {
       try {
-        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=9.73&longitude=100.01&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&daily=uv_index_max&timezone=Asia/Bangkok&forecast_days=1');
+        // Batch: Koh Phangan, Berlin, New York, Bali, Sydney
+        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=9.73,52.52,40.71,-8.65,-33.87&longitude=100.01,13.41,-74.01,115.22,151.21&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&daily=uv_index_max&timezone=Asia/Bangkok&forecast_days=1');
         const data = await res.json();
-        const c = data.current;
-        const d = data.daily;
 
-        if (el('weather-temp')) el('weather-temp')!.textContent = Math.round(c.temperature_2m) + '°C';
-        if (el('weather-wind')) el('weather-wind')!.textContent = Math.round(c.wind_speed_10m) + ' km/h';
-        if (el('ticker-humidity')) el('ticker-humidity')!.textContent = 'HUMIDITY ' + c.relative_humidity_2m + '%';
-        if (el('ticker-uv') && d.uv_index_max) el('ticker-uv')!.textContent = 'UV-INDEX ' + Math.round(d.uv_index_max[0]);
+        // Koh Phangan (index 0) — main row
+        const kp = data[0].current;
+        const kpd = data[0].daily;
+        applyWeather('', kp);
+        if (el('ticker-humidity')) el('ticker-humidity')!.textContent = 'HUMIDITY ' + kp.relative_humidity_2m + '%';
+        if (el('ticker-uv') && kpd.uv_index_max) el('ticker-uv')!.textContent = 'UV-INDEX ' + Math.round(kpd.uv_index_max[0]);
 
-        const codes: Record<number, [string, string]> = {
-          0: ['CLEAR', '\u2600\uFE0F'], 1: ['MOSTLY CLEAR', '\uD83C\uDF24\uFE0F'],
-          2: ['PARTLY CLOUDY', '\u26C5'], 3: ['OVERCAST', '\u2601\uFE0F'],
-          45: ['FOG', '\uD83C\uDF2B\uFE0F'], 48: ['FOG', '\uD83C\uDF2B\uFE0F'],
-          51: ['LIGHT DRIZZLE', '\uD83C\uDF26\uFE0F'], 53: ['DRIZZLE', '\uD83C\uDF26\uFE0F'],
-          55: ['HEAVY DRIZZLE', '\uD83C\uDF27\uFE0F'],
-          61: ['LIGHT RAIN', '\uD83C\uDF26\uFE0F'], 63: ['RAIN', '\uD83C\uDF27\uFE0F'],
-          65: ['HEAVY RAIN', '\uD83C\uDF27\uFE0F'],
-          80: ['SHOWERS', '\uD83C\uDF26\uFE0F'], 81: ['SHOWERS', '\uD83C\uDF27\uFE0F'],
-          82: ['HEAVY SHOWERS', '\u26C8\uFE0F'],
-          95: ['THUNDERSTORM', '\u26A1'], 96: ['THUNDERSTORM', '\u26A1'],
-        };
-        const [desc, icon] = codes[c.weather_code] || ['--', '\u2600\uFE0F'];
-        if (el('weather-desc')) el('weather-desc')!.textContent = desc;
-        if (el('weather-icon')) el('weather-icon')!.textContent = icon;
+        // Other cities
+        const suffixes = ['-de', '-ny', '-bali', '-syd'];
+        for (let i = 0; i < suffixes.length; i++) {
+          applyWeather(suffixes[i], data[i + 1].current);
+        }
       } catch {
         // Silently fail
       }
