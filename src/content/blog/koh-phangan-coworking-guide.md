@@ -3,6 +3,7 @@ title: "Koh Phangan Coworking Guide: Die besten Spots für Digital Nomads"
 description: "Alle Coworking Spaces auf Koh Phangan im Vergleich. Internet-Speed, Preise, Vibes — getestet und ehrlich bewertet."
 date: "2026-03-10"
 tags: ["Koh Phangan", "Coworking", "Digital Nomad"]
+image: "/images/blog/koh-phangan-coworking-guide.webp"
 ---
 
 Koh Phangan ist nicht nur Fullmoon Party. Die Insel hat sich in den letzten Jahren zu einem der besten Digital Nomad Hubs in Südostasien entwickelt. Hier sind die Coworking Spaces, die ich selbst regelmäßig nutze.

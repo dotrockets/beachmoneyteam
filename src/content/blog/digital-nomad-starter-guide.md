@@ -3,6 +3,7 @@ title: "Digital Nomad werden: Der ehrliche Starter Guide 2026"
 description: "Wie du den Sprung vom 9-to-5 zum ortsunabhängigen Arbeiten schaffst. Kein Hype, nur das was wirklich funktioniert."
 date: "2026-03-01"
 tags: ["Digital Nomad", "Anfänger", "Remote Work"]
+image: "/images/blog/digital-nomad-starter-guide.webp"
 ---
 
 Du willst Digital Nomad werden? Guter Plan. Aber lass mich ehrlich sein: Es ist nicht so easy wie Instagram es verkauft. Hier ist, was du wirklich wissen musst.

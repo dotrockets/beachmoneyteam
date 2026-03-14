@@ -3,6 +3,7 @@ title: "MacBook Air M4 Review: 6 Monate als Digital Nomad"
 description: "Mein ehrliches Review nach 6 Monaten MacBook Air M4 auf Koh Phangan. Performance, Akku, Schwächen — alles was du wissen musst."
 date: "2026-02-15"
 tags: ["MacBook", "Review", "Hardware"]
+image: "/images/blog/macbook-air-m4-review.webp"
 ---
 
 Seit 6 Monaten ist das MacBook Air M4 mein Daily Driver. Jeden Tag, überall auf Koh Phangan — im Coworking, im Café, am Strand, im Bett. Hier ist mein ehrliches Fazit.
